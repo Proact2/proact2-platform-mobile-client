@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.MessageReplyCounterView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    HeightRequest="22"
+    HorizontalOptions="Start">
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="auto" />
+    </Grid.ColumnDefinitions>
+
+    <Label
+        Grid.Column="0"
+        Style="{x:StaticResource FontIconStyle}"
+        Text="{x:Static fontawesome:FontAwesomeIcons.Comment}"
+        FontSize="22"
+        TextColor="{DynamicResource SecondaryTextColor}" />
+
+    <Label
+        x:Name="CounterTextLabel"
+        Grid.Column="1"
+        FontFamily="{DynamicResource PoppinsMedium}"
+        FontSize="18"
+        Text="0"
+        VerticalOptions="Center"
+        VerticalTextAlignment="Center"
+        TextColor="{DynamicResource SecondaryTextColor}" />
+
+</Grid>

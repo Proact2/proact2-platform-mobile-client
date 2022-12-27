@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.ImageProfileEditView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    HeightRequest="100"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    WidthRequest="100">
+
+    <local:RoundedCornerImageView
+        x:Name="ImageView"
+        BorderColor="Gray"
+        CornerRadius="50"
+        ImageHeight="100"
+        ImageWidth="100"
+        Visual="Material" />
+
+    <Grid
+        x:Name="EditImageButton"
+        HeightRequest="40"
+        HorizontalOptions="End"
+        TranslationX="5"
+        TranslationY="5"
+        VerticalOptions="End"
+        WidthRequest="40">
+
+        <BoxView
+            BackgroundColor="{x:DynamicResource SecondaryColor}"
+            CornerRadius="20"
+            HeightRequest="40"
+            WidthRequest="40" />
+
+        <Label Style="{x:StaticResource FontIconStyle}"
+               TextColor="White"
+               Text="{x:Static fontawesome:FontAwesomeIcons.Camera}" />
+    </Grid>
+
+</Grid>

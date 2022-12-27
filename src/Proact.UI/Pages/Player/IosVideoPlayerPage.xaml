@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.IosVideoPlayerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:IosVideoPlayerViewModel"
+    BackgroundColor="Black"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button
+                Grid.Row="0"
+                Margin="0,50,0,0"
+                BackgroundColor="#4DFFFFFF"
+                Command="{mvx:MvxBind ClosePageCommand}"
+                CornerRadius="20"
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                Style="{x:DynamicResource FontIconButtonStyle}"
+                Text="{x:Static fontawesome:FontAwesomeIcons.Times}"
+                TextColor="White"
+                VerticalOptions="Start"
+                WidthRequest="40" />
+
+
+            <mm:VideoView
+                Grid.Row="1"
+                ShowControls="True"
+                VerticalOptions="FillAndExpand" />
+
+
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

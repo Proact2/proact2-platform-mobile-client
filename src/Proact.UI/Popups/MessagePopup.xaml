@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="Proact.UI.MessagePopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BackgroundColor="#80000000">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="700"
+            DurationOut="100"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1"
+            ScaleOut="1" />
+    </pages:PopupPage.Animation>
+
+    <ScrollView HorizontalOptions="Fill" VerticalOptions="End">
+
+        <Frame
+            Margin="0"
+            BackgroundColor="White"
+            CornerRadius="25"
+            HeightRequest="230"
+            HorizontalOptions="FillAndExpand"
+            Visual="Material">
+
+            <Grid
+                x:Name="FrameContainer"
+                Padding="5"
+                HorizontalOptions="FillAndExpand"
+                RowSpacing="5"
+                VerticalOptions="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid
+                    HeightRequest="56"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <BoxView
+                        x:Name="IconBackground"
+                        CornerRadius="28"
+                        HeightRequest="56"
+                        WidthRequest="56" />
+
+                    <Label
+                        x:Name="MessageIcon"
+                        HeightRequest="56"
+                        HorizontalOptions="Center"
+                        IsEnabled="True"
+                        Style="{x:StaticResource FontIconStyle}"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        FontSize="28"
+                        WidthRequest="56" />
+                </Grid>
+
+                <Label
+                    x:Name="MessageTextLabel"
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                    VerticalOptions="Center" />
+            </Grid>
+        </Frame>
+    </ScrollView>
+</pages:PopupPage>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.NewBroadcastMessagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:NewBroadcastMessageViewModel"
+    x:DataType="viewModels:NewBroadcastMessageViewModel"
+    BackgroundColor="{DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding ClosePageCommand}"
+            Priority="0"
+            Text="{core:Translate Close}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+
+                <Grid.Padding>
+                    <OnIdiom x:TypeArguments="Thickness">
+                        <OnIdiom.Phone>20</OnIdiom.Phone>
+                        <OnIdiom.Tablet>150,20</OnIdiom.Tablet>
+                    </OnIdiom>
+                </Grid.Padding>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="48" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="48" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <!--  info messages  -->
+                <local:MessageBoxView Grid.Row="0" MessageBoxModel="{Binding MessageBoxModel}" />
+
+                <Label
+                    Grid.Row="1"
+                    FontSize="20"
+                    Style="{DynamicResource SecondaryLightLabelStyle}"
+                    Text="{core:Translate Title}"
+                    VerticalOptions="End" />
+
+                <Entry
+                    Grid.Row="2"
+                    BackgroundColor="White"
+                    Style="{x:DynamicResource EntryStyle}"
+                    TextColor="{x:DynamicResource SecondaryTextColor}"
+                    Text="{Binding Title}" />
+
+                <Label
+                    Grid.Row="3"
+                    IsVisible="{Binding TitleErrorIsVisible}"
+                    Style="{DynamicResource ErrorLabelStyle}"
+                    Text="{core:Translate TitleRequiredError}" />
+
+                <Label
+                    Grid.Row="4"
+                    FontSize="20"
+                    Style="{DynamicResource SecondaryLightLabelStyle}"
+                    Text="{core:Translate BodyMessage}"
+                    VerticalOptions="End" />
+
+                  <Label
+                    x:Name="MessageCharsCounter"
+                    Grid.Row="4"
+                    FontSize="14"
+                    HorizontalOptions="End"
+                    Style="{DynamicResource PrimarySemiBoldLabelStyle}"
+                    VerticalOptions="End" />
+
+                <Editor
+                    x:Name="MessageEditor"
+                    Grid.Row="5"
+                    BackgroundColor="White"
+                    TextChanged="EditorTextChanged"
+                    TextColor="{x:DynamicResource SecondaryTextColor}"
+                    Text="{Binding Body}">
+                    <Editor.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>180</OnIdiom.Phone>
+                            <OnIdiom.Tablet>360</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Editor.HeightRequest>
+                </Editor>
+
+                <Label
+                    Grid.Row="6"
+                    IsVisible="{Binding BodyErrorIsVisible}"
+                    Style="{DynamicResource ErrorLabelStyle}"
+                    Text="{core:Translate MessageRequiredError}" />
+
+                <Button
+                    Grid.Row="8"
+                    Margin="0,20"
+                    Command="{Binding SubmitButtonPressedCommand}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                    Style="{x:DynamicResource MainButtonStyle}"
+                    Text="{core:Translate NewTextMessageSubmitButtonText}" />
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</views:MvxContentPage>

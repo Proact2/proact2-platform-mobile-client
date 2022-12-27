@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <views:MvxContentPage
+        x:Class="Proact.Mobile.UI.Pages.Analysis.AddAnalysisPage"
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+        xmlns:local="clr-namespace:Proact.UI"
+        xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+        xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+        xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+        xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+        x:TypeArguments="viewModels:AddAnalysisViewModel"
+        x:DataType="viewModels:AddAnalysisViewModel"
+        BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+        Title="{Binding PageTitle}"
+         Padding="{x:StaticResource CellPadding}"
+        NavigationPage.HasNavigationBar="True">
+     
+     <ContentPage.Resources>
+         <DataTemplate x:Key="SingleSelectionTemplate">
+             <local:AddSingleSelectionLexiconView/>
+         </DataTemplate>
+         <DataTemplate x:Key="MultipleSelectionTemplate">
+             <local:AddMultipleSelectionLexiconView />
+         </DataTemplate>
+         <local:AddLexiconViewTemplateSelector
+             x:Key="AddAnalysisTemplateSelector"
+             SingleSelectionTemplate="{StaticResource SingleSelectionTemplate}"
+             MultipleSelectionTemplate="{StaticResource MultipleSelectionTemplate}" />
+     </ContentPage.Resources>
+     
+     <ContentPage.Content>
+
+         <Grid
+             RowSpacing="10">
+             <Grid.RowDefinitions>
+                 <RowDefinition Height="*" />
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="20" />
+             </Grid.RowDefinitions>
+             
+             <ActivityIndicator
+                 Grid.Row="0"
+                 Grid.RowSpan="2"
+                 IsRunning="{Binding IsBusy}"
+                 IsVisible="{Binding IsBusy}"
+                 Style="{DynamicResource ActivityIndicatorStyle}"/>
+             
+             <CollectionView
+                 Grid.Row="0"
+                 ItemsSource="{Binding Categories}"
+                 ItemTemplate="{x:StaticResource AddAnalysisTemplateSelector}"
+                 ItemSizingStrategy="MeasureAllItems"
+                 SelectionMode="None" />
+
+             <Button
+                 Grid.Row="1"
+                 Text="{core:Translate AddAnalysisButtonText}"
+                 Command="{Binding SubmitAnalysisCommand}"
+                 Style="{DynamicResource MainButtonStyle}"
+                 BackgroundColor="{x:StaticResource AnalysisColor}" />
+         </Grid>
+        
+        
+    </ContentPage.Content>
+</views:MvxContentPage>

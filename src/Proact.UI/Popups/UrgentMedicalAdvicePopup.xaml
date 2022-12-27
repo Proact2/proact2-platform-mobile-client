@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="Proact.UI.UrgentMedicalAdvicePopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BackgroundColor="#80000000"
+    CloseWhenBackgroundIsClicked="False">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="700"
+            DurationOut="100"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1"
+            ScaleOut="1" />
+    </pages:PopupPage.Animation>
+
+    <ScrollView HorizontalOptions="Fill" VerticalOptions="Center">
+
+        <Frame
+            Margin="10"
+            BackgroundColor="{x:DynamicResource PageBackgroundColor}"
+            CornerRadius="25"
+            HorizontalOptions="Center"
+            Visual="Material"
+            WidthRequest="400">
+
+            <Grid
+                x:Name="FrameContainer"
+                Padding="5"
+                HorizontalOptions="Center"
+                RowSpacing="5"
+                VerticalOptions="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Padding="0,20"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{x:DynamicResource PrimarySemiBoldLabelStyle}"
+                    Text="{core:Translate UrgentMedicalAdviceTitle}"
+                    VerticalOptions="Center" />
+
+                <Image
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    Source="ic_urgent_message"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="2"
+                    Padding="0,20"
+                    VerticalOptions="Center">
+
+                    <Label
+                        FontSize="15"
+                        Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                        Text="{core:Translate UrgentMedicalAdviceMessage}" />
+
+                    <Label
+                        FontSize="15"
+                        Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                        Text="{core:Translate UrgentMedicalAdviceMessage2}" />
+
+                    <Label
+                        FontSize="15"
+                        Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                        Text="{core:Translate UrgentMedicalAdviceMessage3}" />
+
+                </StackLayout>
+
+
+                <Grid Grid.Row="3" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        FontSize="14"
+                        Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                        Text="{core:Translate UrgentMedicalAdviceCondition}" />
+
+                    <Switch
+                        x:Name="AdviceAgreeSwitch"
+                        Grid.Column="1"
+                        Toggled="SwitchToggled"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Label
+                    x:Name="ErrorLabel"
+                    Grid.Row="4"
+                    IsVisible="false"
+                    Style="{x:DynamicResource ErrorLabelStyle}"
+                    Text="{core:Translate UrgentMedicalAdviceError}"
+                    VerticalOptions="Start" />
+
+                <Button
+                    Grid.Row="5"
+                    Margin="20"
+                    Clicked="ContinueButtonClicked"
+                    Style="{x:DynamicResource MainButtonStyle}"
+                    Text="{core:Translate Continue}" />
+
+            </Grid>
+        </Frame>
+    </ScrollView>
+</pages:PopupPage>

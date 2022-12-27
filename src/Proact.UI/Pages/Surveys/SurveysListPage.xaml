@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.SurveysListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:SurveysListViewModel"
+    BackgroundColor="{DynamicResource EditorPageBackgroundColor}">
+
+    <ContentPage.Content>
+        <Grid>
+            <Label
+                FontSize="14"
+                HorizontalOptions="Center"
+                IsVisible="{Binding EmptyListIsVisible}"
+                Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                Text="{core:Translate EmptyComiledSurveysList}"
+                VerticalOptions="Center" />
+
+            <RefreshView Command="{Binding ListRefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+                <CollectionView
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Surveys}"
+                    SelectedItem="{Binding SelectedSurvey}"
+                    SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                    SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="80">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="10,10,10,0"
+                                    Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                                    Text="{Binding SurveyTitle}" />
+
+                                <StackLayout
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="10,0"
+                                    Orientation="Horizontal"
+                                    Spacing="5">
+
+                                    <Label
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center"
+                                        IsVisible="{Binding ExpiresSoon}"
+                                        Style="{x:DynamicResource FontIconStyle}"
+                                        Text="{x:Static fontawesome:FontAwesomeIcons.ExclamationTriangle}"
+                                        TextColor="{x:DynamicResource WarningColor}" />
+
+                                    <Label
+                                        FontSize="14"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center"
+                                        Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SurveysListViewModel}}, Path=DatePrefixText}" />
+
+                                    <Label
+                                        FontSize="14"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center"
+                                        Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                                        Text="{Binding DateToShow}" />
+
+                                </StackLayout>
+
+                                <Label
+                                    Grid.RowSpan="3"
+                                    Grid.Column="1"
+                                    Style="{x:DynamicResource FontIconStyle}"
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.ChevronRight}"
+                                    TextColor="{x:DynamicResource SecondaryTextColor}" />
+
+                                <BoxView
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="{x:DynamicResource DividerColor}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </RefreshView>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

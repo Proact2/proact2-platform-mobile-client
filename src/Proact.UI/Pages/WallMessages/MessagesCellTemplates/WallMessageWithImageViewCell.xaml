@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.WallMessageWithImageViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    Padding="{x:StaticResource MessageCellPadding}"
+    x:DataType="models:MessagesContainer"
+    RowSpacing="0">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="1" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="66" />
+        <RowDefinition Height="1" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+    </Grid.RowDefinitions>
+
+    <BoxView Grid.Row="0" Color="{DynamicResource DividerColor}" />
+
+    <!--  Main message  -->
+
+    <Grid
+        Grid.Row="1"
+        Padding="18,9"
+        BackgroundColor="{x:DynamicResource PageBackgroundColor}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Author and emoji  -->
+
+        <local:MessageHeaderContentView Grid.Row="0"/>
+
+        <!--  Message text  -->
+        <Label
+            Grid.Row="1"
+            mvx:Bi.nd="Text OriginalMessage.Body"
+            LineBreakMode="TailTruncation"
+            MaxLines="5"
+            Style="{DynamicResource MessageTextStyle}" />
+    </Grid>
+
+    <Image
+        Grid.Row="2"
+        Aspect="AspectFill"
+        BackgroundColor="Black"
+        Source="{Binding OriginalMessage.Attachment.Url}">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=OpenImageAttachmentCommand}" CommandParameter="{Binding OriginalMessage.MessageId}" />
+        </Image.GestureRecognizers>
+
+        <Image.HeightRequest>
+            <OnIdiom x:TypeArguments="x:Double">
+                <OnIdiom.Phone>245</OnIdiom.Phone>
+                <OnIdiom.Tablet>500</OnIdiom.Tablet>
+            </OnIdiom>
+        </Image.HeightRequest>
+
+    </Image>
+
+    <!--  Toolbar  -->
+    <Grid
+        Grid.Row="3"
+        Padding="18,9"
+        BackgroundColor="{x:DynamicResource PageBackgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="46" />
+            <ColumnDefinition Width="46" />
+            <ColumnDefinition Width="46" />
+        </Grid.ColumnDefinitions>
+
+        <local:MessageReplyCounterView MessageCount="{Binding ReplyMessagesCount}" />
+
+        <local:TextReplyIconButton Grid.Column="2" IsVisible="{Binding OriginalMessage.MessageScopeHealthIsVisible}">
+            <local:TextReplyIconButton.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=AddNewTextReplyCommand}" CommandParameter="{Binding OriginalMessage}" />
+            </local:TextReplyIconButton.GestureRecognizers>
+        </local:TextReplyIconButton>
+
+        <local:VoiceReplyIconButton Grid.Column="3" IsVisible="{Binding OriginalMessage.MessageScopeHealthIsVisible}">
+            <local:VoiceReplyIconButton.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=AddNewVoiceReplyCommand}" CommandParameter="{Binding OriginalMessage}" />
+            </local:VoiceReplyIconButton.GestureRecognizers>
+        </local:VoiceReplyIconButton>
+
+        <local:VideoReplyIconButton Grid.Column="4" IsVisible="{Binding OriginalMessage.MessageScopeHealthIsVisible}">
+            <local:VideoReplyIconButton.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=AddNewVideoReplyCommand}" CommandParameter="{Binding OriginalMessage}" />
+            </local:VideoReplyIconButton.GestureRecognizers>
+        </local:VideoReplyIconButton>
+
+          <local:TextReplyIconButton Grid.Column="4" IsVisible="{Binding OriginalMessage.MessageScopeInfoIsVisible}">
+            <local:TextReplyIconButton.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=AddNewTextReplyCommand}" CommandParameter="{Binding OriginalMessage}" />
+            </local:TextReplyIconButton.GestureRecognizers>
+        </local:TextReplyIconButton>
+    </Grid>
+
+    <BoxView Grid.Row="4" Color="{DynamicResource DividerColor}" />
+
+    <!--  Replies  -->
+
+    <StackLayout
+        Grid.Row="5"
+        BackgroundColor="{x:DynamicResource PageBackgroundColor}"
+        BindableLayout.ItemTemplateSelector="{x:StaticResource replyMessagesDataTemplateSelector}"
+        BindableLayout.ItemsSource="{Binding DisplayableReplyMessages}"
+        Orientation="Vertical"
+        Spacing="0" />
+
+    <Label
+        Grid.Row="6"
+        IsVisible="{Binding ShowMoreMessage}"
+        Style="{DynamicResource ShowAllMessageLabelTextStyle}"
+        Text="{core:Translate ShowAllReplyButtonText}" />
+
+</Grid>

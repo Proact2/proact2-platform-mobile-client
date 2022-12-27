@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="Proact.UI.MessageBoxView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    Padding="10"
+    HasShadow="False"
+    Visual="Material">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Label
+            x:Name="TitleLabel"
+            Grid.Row="0"
+            FontAttributes="Bold"
+            FontSize="16" />
+
+        <Label
+            x:Name="MessageLabel"
+            Grid.Row="1"
+            FontSize="14" />
+
+        <Label
+            x:Name="CloseButton"
+            Grid.Row="0"
+            HeightRequest="22"
+            HorizontalOptions="End"
+            Style="{x:StaticResource FontIconStyle}"
+            Text="{x:Static fontawesome:FontAwesomeIcons.Times}"
+            VerticalOptions="Start"
+            WidthRequest="22" />
+
+    </Grid>
+</Frame>

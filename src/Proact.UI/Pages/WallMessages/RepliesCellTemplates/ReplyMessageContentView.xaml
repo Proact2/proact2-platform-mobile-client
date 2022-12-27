@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Proact.UI.ReplyMessageContentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:DataType="models:MessageModel">
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+
+            <Grid Padding="10" ColumnSpacing="5">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  User Profile  -->
+
+                <Grid
+                    Margin="0"
+                    MinimumHeightRequest="45"
+                    VerticalOptions="Start">
+
+                    <Ellipse
+                        HeightRequest="44"
+                        HorizontalOptions="Center"
+                        Stroke="{Binding AvatarStrokeColor}"
+                        StrokeThickness="2"
+                        VerticalOptions="Center"
+                        WidthRequest="44" />
+
+                    <local:RoundedCornerImageView
+                        CornerRadius="17"
+                        HasShadow="False"
+                        HorizontalOptions="Center"
+                        ImageHeight="34"
+                        ImageSource="{Binding AvatarUrl}"
+                        ImageWidth="34"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!--  Message details  -->
+
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        FontSize="{x:StaticResource ReplyAuthorTextFontSize}"
+                        LineBreakMode="TailTruncation"
+                        MaxLines="1"
+                        Style="{DynamicResource PrimarySemiBoldLabelStyle}"
+                        Text="{Binding AuthorName}"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        Grid.Row="0"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        MaxLines="1"
+                        Style="{DynamicResource MessageDatetimeStyle}"
+                        Text="{Binding FormattedCreationDatetime}"
+                        VerticalTextAlignment="Center" />
+
+
+                    <Label
+                        x:Name="MessageLabel"
+                        Grid.Row="1"
+                        FontSize="{x:StaticResource ReplyMessageTextFontSize}"
+                        LineBreakMode="TailTruncation"
+                        MinimumHeightRequest="30"
+                        Style="{DynamicResource SecondaryRegularLabelStyle}"
+                        Text="{Binding Body}" />
+
+                </Grid>
+
+            </Grid>
+
+            <BoxView Grid.Row="1" Color="{x:DynamicResource DividerColor}" />
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

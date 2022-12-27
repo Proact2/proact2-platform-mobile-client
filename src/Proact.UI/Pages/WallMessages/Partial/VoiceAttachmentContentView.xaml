@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Proact.UI.VoiceAttachmentContentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome">
+    <ContentView.Content>
+
+        <Grid
+            Grid.Row="2"
+            Padding="20,10"
+            BackgroundColor="{x:DynamicResource VoiceRecordingColor}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <Label
+                Grid.RowSpan="2"
+                FontSize="48"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                InputTransparent="True"
+                Style="{x:DynamicResource FontIconStyle}"
+                Text="{x:Static fontawesome:FontAwesomeIcons.PlayCircle}"
+                TextColor="White"
+                VerticalOptions="Center"
+                WidthRequest="60" />
+
+
+            <StackLayout
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Orientation="Vertical"
+                VerticalOptions="Center">
+
+                <Label
+                    Grid.Row="0"
+                    FontSize="15"
+                    Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                    Text="{core:Translate TapToStartVoiceReproduction}"
+                    TextColor="White"
+                    VerticalOptions="End"
+                    VerticalTextAlignment="End"/>
+
+                <Label
+                    Grid.Row="1"
+                    FontSize="12"
+                    Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                    Text="{Binding OriginalMessage.Attachment.FormattedDuration}"
+                    TextColor="White"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Start"/>
+
+            </StackLayout>
+
+            <Label
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                FontSize="32"
+                HorizontalOptions="Center"
+                Style="{x:DynamicResource FontIconStyle}"
+                Text="{x:Static fontawesome:FontAwesomeIcons.Microphone}"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

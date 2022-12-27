@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.VoiceReplyIconButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    HorizontalOptions="Center"
+    VerticalOptions="Center">
+
+    <BoxView
+        BackgroundColor="{DynamicResource VoiceMessageBGButtonColor}"
+        CornerRadius="20"
+        HeightRequest="40"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        WidthRequest="40" />
+
+    <Label
+        HeightRequest="40"
+        WidthRequest="40"
+        Style="{x:StaticResource FontIconStyle}"
+        Text="{x:Static fontawesome:FontAwesomeIcons.Microphone}"
+        TextColor="{DynamicResource VoiceMessageIconButtonColor}" />
+</Grid>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.LandingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:DataType="viewModels:LandingViewModel"
+    x:TypeArguments="viewModels:LandingViewModel"
+    NavigationPage.HasNavigationBar="false"
+    Style="{x:StaticResource SigninPageStyle}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Image
+                HeightRequest="144"
+                HorizontalOptions="Center"
+                Source="ic_splash"
+                VerticalOptions="Center" />
+
+            <Grid Padding="20" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <!--  Errors messages  -->
+                <local:MessageBoxView MessageBoxModel="{Binding MessageBoxModel}" VerticalOptions="Start" />
+
+                <!--  Logo  -->
+
+                <!--  Tagline  -->
+                <Label
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{DynamicResource HeadlineLabelStyle}"
+                    Text="{core:Translate Tagline}"
+                    TextColor="{x:StaticResource PrimaryDarkColor}" />
+
+                <Button
+                    Grid.Row="2"
+                    Margin="20,0"
+                    Command="{Binding ContinueButtonCommand}"
+                    Style="{Binding ButtonStyle}"
+                    Text="{core:Translate LandingStartButton}" />
+
+                <ActivityIndicator
+                    Grid.Row="2"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{x:StaticResource ActivityIndicatorStyle}"
+                    Color="White" />
+
+                <Image
+                    Grid.Row="3"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"
+                    Source="ic_upsmart"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Row="4"
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                    Text="{Binding ProactAppVersion}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

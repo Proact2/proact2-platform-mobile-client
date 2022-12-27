@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.BroadcastMessageViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    RowSpacing="0"
+    Padding="{x:StaticResource MessageCellPadding}" >
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+    </Grid.RowDefinitions>
+
+    <Grid
+        Grid.Row="0"
+        Padding="18,9"
+        BackgroundColor="{x:DynamicResource BroadcastBGColor}"
+        RowSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Author  -->
+        <local:MessageHeaderContentView Grid.Row="0" />
+
+        <!--  Title text  -->
+        <Label
+            Grid.Row="1"
+            LineBreakMode="TailTruncation"
+            MaxLines="2"
+            Style="{DynamicResource MessageTitleTextStyle}"
+            Text="{Binding OriginalMessage.Title}"
+            TextColor="Black" />
+
+        <!--  Message text  -->
+        <Label
+            Grid.Row="2"
+            Style="{DynamicResource MessageTextStyle}"
+            Text="{Binding OriginalMessage.Body}"
+            TextColor="Black" />
+
+    </Grid>
+</Grid>

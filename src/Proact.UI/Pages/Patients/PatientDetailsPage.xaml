@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.PatientDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding UserModel.Name}"
+    x:TypeArguments="viewModels:PatientDetailsViewModel"
+    BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <Grid Padding="20" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ActivityIndicator
+                    Grid.Row="1"
+                    IsVisible="{Binding IsBusy}"
+                    IsRunning="{Binding IsBusy}"
+                    Style="{x:StaticResource ActivityIndicatorStyle}" />
+
+                <Frame
+                    Grid.Row="0"
+                    Margin="0"
+                    HeightRequest="100"
+                    IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                    Style="{x:DynamicResource OverlayFrame}">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <local:RoundedCornerImageView
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            CornerRadius="50"
+                            HasShadow="False"
+                            HorizontalOptions="Center"
+                            ImageHeight="100"
+                            ImageSource="{Binding UserModel.AvatarUrl}"
+                            ImageWidth="100"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Padding="10"
+                            FontSize="20"
+                            Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                            Text="{Binding UserModel.Name}"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+                </Frame>
+
+                <Frame
+                    Grid.Row="1"
+                    Margin="0"
+                    Padding="10"
+                    IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                    Style="{x:DynamicResource OverlayFrame}">
+
+                    <StackLayout>
+                        <local:OptionRowItemView Text="{core:Translate PatientDetailsSurveysCompleted}">
+                            <local:OptionRowItemView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{mvx:MvxBind OpenCompletedSurveysCommand}" />
+                            </local:OptionRowItemView.GestureRecognizers>
+                        </local:OptionRowItemView>
+
+
+                        <!--<local:OptionRowItemView Text="{core:Translate PatientDetailsMediaList}">
+                            <local:OptionRowItemView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{mvx:MvxBind OpenPatientMediaListCommand}" />
+                            </local:OptionRowItemView.GestureRecognizers>
+                        </local:OptionRowItemView>-->
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</views:MvxContentPage>

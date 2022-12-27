@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.WallMessagesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:WallMessagesViewModel"
+    x:DataType="viewModels:WallMessagesViewModel"
+    BackgroundColor="{x:DynamicResource DividerColor}"
+    NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <local:HeaderView
+                Grid.Row="0"
+                BadgeIsVisible="{Binding UnreadNotifications}"
+                ImageSource="{Binding UserProfileImageSource}"
+                ProfileTapCommand="{Binding OpenProfilePageCommand}"
+                SearchTapCommand="{Binding OpenSearchPageCommand}"
+                SearchIsVisible="{Binding CurrentUserIsInMedicalTeam}"/>
+
+            <ActivityIndicator
+                Grid.Row="1"
+                IsEnabled="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{x:DynamicResource ActivityIndicatorStyle}"
+                Color="{x:DynamicResource PrimaryTextColor}" />
+
+            <Label
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding MessageListIsEmpty}"
+                Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                Text="{core:Translate EmptyWallMessagesMessage}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+
+            <RefreshView
+                Grid.Row="1"
+                Command="{Binding ListRefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
+                RefreshColor="{x:DynamicResource PrimaryTextColor}">
+                <CollectionView
+                    x:Name="MessagesCollectionView"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemTemplate="{x:StaticResource messagesDataTemplateSelector}"
+                    ItemsSource="{Binding Messages}"
+                    Scrolled="CollectionView_Scrolled"
+                    SelectedItem="{Binding SelectedMessage}"
+                    SelectionChangedCommand="{Binding SelectionChanged}"
+                    SelectionMode="Single" />
+            </RefreshView>
+
+            <local:MediaUploadStatusBar
+                Grid.Row="1"
+                ActivityIndicatorIsRunning="{Binding MessageUploading}"
+                IsVisible="{Binding MessageUploading}"
+                VerticalOptions="Start" />
+
+            <Grid
+                Grid.Row="1"
+                HeightRequest="32"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsLoadingNextPage}"
+                VerticalOptions="End"
+                WidthRequest="32">
+                <ActivityIndicator
+                    IsEnabled="{Binding IsLoadingNextPage}"
+                    IsRunning="{Binding IsLoadingNextPage}"
+                    Style="{x:DynamicResource ActivityIndicatorStyle}"
+                    Color="{x:DynamicResource PrimaryTextColor}" />
+
+            </Grid>
+
+            <Grid
+                x:Name="buttonsGroup"
+                Grid.Row="1"
+                ColumnSpacing="0"
+                VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1.5*" />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    x:Name="MessageFilterButton"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    Command="{Binding ListMessagesToggleCommand}"
+                    HorizontalOptions="Center"
+                    ImageSource="ic_filter.png"
+                    IsVisible="{Binding CurrentUserIsInMedicalTeam}"
+                    Style="{DynamicResource FloatingActionButtonStyle}"
+                    Text="{Binding ListMessagesToggleButtonText}"
+                    TextColor="{x:DynamicResource SecondaryTextColor}"
+                    WidthRequest="250" />
+
+                <local:TwoLinesButton
+                    x:Name="NewMessageButton"
+                    Grid.Column="1"
+                    Command="{Binding NewMessageButtonCommand}"
+                    HorizontalOptions="Center"
+                    ImageSource="ic_add_white.png"
+                    Style="{DynamicResource FloatingActionButtonStyle}"
+                    Text="{Binding NewMessageButtonText}"
+                    IsVisible="{Binding NewMessageButtonIsVisible}"
+                    WidthRequest="380" />
+
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:local="clr-namespace:Proact.UI"
+      xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+      xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+      xmlns:fontawesome="clr-namespace:FontAwesome"
+      x:DataType="models:AnalysisModel"
+      x:Class="Proact.UI.AnalysisAuthorView">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="36" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <local:RoundedCornerImageView
+                Grid.Column="0"
+                ImageSource="{Binding Author.AvatarUrl}"
+                CornerRadius="18"
+                HasShadow="False"
+                ImageHeight="36"
+                ImageWidth="36" />
+
+            <StackLayout
+                Grid.Column="1"
+                Spacing="2"
+                HeightRequest="40"
+                VerticalOptions="Center">
+                <Label Text="{Binding Author.Name}" 
+                       Style="{DynamicResource AnalysisAuthorStyle}" />
+                <Label 
+                    Text="{Binding FormattedCreationDatetime}" 
+                    Style="{DynamicResource AnalysisDatetimeStyle}" />
+            </StackLayout>
+
+            <local:IconButton
+                Grid.Column="2"
+                HeightRequest="38"
+                Icon="{x:Static fontawesome:FontAwesomeIcons.PencilAlt}"
+                IconColor="{x:StaticResource AnalysisColor}"
+                IsVisible="{Binding IsMine}"
+                IconSize="20"
+                WidthRequest="38" >
+                
+                <local:IconButton.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:AnalysisListViewModel}}, Path=EditAnalysisCommand}" 
+                        CommandParameter="{Binding .}" />
+                </local:IconButton.GestureRecognizers>
+                
+                </local:IconButton>
+
+            <local:IconButton
+                Grid.Column="3"
+                HeightRequest="38"
+                Icon="{x:Static fontawesome:FontAwesomeIcons.Trash}"
+                IconColor="{x:StaticResource AnalysisColor}"
+                IsVisible="{Binding IsMine}"
+                IconSize="20"
+                WidthRequest="38" >
+                
+                <local:IconButton.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:AnalysisListViewModel}}, Path=DeleteAnalysisCommand}" 
+                        CommandParameter="{Binding .}" />
+                </local:IconButton.GestureRecognizers>
+                
+            </local:IconButton>
+
+</Grid>

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Proact.UI.MessageHeaderContentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:DataType="models:MessagesContainer">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="66" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Ellipse
+                Grid.Column="0"
+                mvx:Bi.nd="Stroke OriginalMessage.AvatarStrokeColor"
+                HeightRequest="64"
+                HorizontalOptions="Center"
+                StrokeThickness="4"
+                VerticalOptions="Center"
+                WidthRequest="64" />
+
+            <local:RoundedCornerImageView
+                Grid.Column="0"
+                mvx:Bi.nd="ImageSource OriginalMessage.AvatarUrl"
+                CornerRadius="25"
+                HasShadow="False"
+                ImageHeight="50"
+                ImageWidth="50" >
+
+            <local:RoundedCornerImageView.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=OpenPatientProfileCommand}"
+                    CommandParameter="{Binding OriginalMessage.MessageId}" />
+                </local:RoundedCornerImageView.GestureRecognizers>
+            </local:RoundedCornerImageView>
+
+            <Grid
+                Grid.Column="1"
+                ColumnSpacing="4"
+                RowSpacing="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    mvx:Bi.nd="Text OriginalMessage.AuthorName"
+                    Style="{DynamicResource MessageAuthorStyle}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" >
+
+                     <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessagesViewModel}}, Path=OpenPatientProfileCommand}"
+                            CommandParameter="{Binding OriginalMessage.MessageId}" />
+                     </Label.GestureRecognizers>
+
+                    </Label>
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    mvx:Bi.nd="Text OriginalMessage.FormattedCreationDatetime"
+                    Style="{DynamicResource MessageDatetimeStyle}" />
+
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    mvx:Bi.nd="IsVisible OriginalMessage.IsAnalysisCountVisible"
+                    Source="ic_analysisCounter" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    mvx:Bi.nd="Text OriginalMessage.AnalysisCount;IsVisible OriginalMessage.IsAnalysisCountVisible"
+                    FontSize="16"
+                    HeightRequest="20"
+                    Style="{DynamicResource PrimarySemiBoldLabelStyle}"
+                    TextColor="{x:StaticResource AnalysisColor}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+
+
+            <Image
+                Grid.Column="2"
+                mvx:Bi.nd="Source OriginalMessage.EmotionImageSource; IsVisible OriginalMessage.EmotionIsVisible"
+                HeightRequest="34"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="34" />
+
+            <local:IconButton
+                Grid.Column="3"
+                mvx:Bi.nd="IsVisible OriginalMessage.MessageScopeInfoIsVisible"
+                ButtonBackgroundColor="White"
+                CornerRadius="5"
+                HeightRequest="38"
+                Icon="{x:Static fontawesome:FontAwesomeIcons.InfoCircle}"
+                IconColor="{x:StaticResource PrimaryDarkColor}"
+                IconSize="30"
+                WidthRequest="38" />
+
+            <local:IconButton
+                Grid.Column="3"
+                mvx:Bi.nd="IsVisible OriginalMessage.MessageScopeHealthIsVisible"
+                ButtonBackgroundColor="White"
+                CornerRadius="5"
+                HeightRequest="38"
+                Icon="{x:Static fontawesome:FontAwesomeIcons.Heartbeat}"
+                IconColor="{x:StaticResource VideoMessageIconButtonColor}"
+                IconSize="30"
+                WidthRequest="38" />
+
+
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

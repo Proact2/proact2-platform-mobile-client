@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.DiscreteSlider"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    RowSpacing="0">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="auto" />
+    </Grid.RowDefinitions>
+
+    <Slider
+        x:Name="MainSlider"
+        Grid.Row="0"
+        Margin="0"
+        ThumbColor="{x:DynamicResource PrimaryColor}"
+        ValueChanged="OnSliderValueChanged" />
+
+    <StackLayout
+        x:Name="TicksStack"
+        Grid.Row="1"
+        Padding="6,0"
+        HorizontalOptions="FillAndExpand"
+        Orientation="Horizontal"
+        Spacing="0" />
+
+    <Label
+        x:Name="MinLabel"
+        Grid.Row="2"
+        FontSize="16"
+        HorizontalOptions="Start"
+        HorizontalTextAlignment="Start"
+        Style="{x:DynamicResource SecondaryRegularLabelStyle}" />
+
+    <Label
+        x:Name="MaxLabel"
+        Grid.Row="2"
+        FontSize="16"
+        HorizontalOptions="End"
+        HorizontalTextAlignment="End"
+        Style="{x:DynamicResource SecondaryRegularLabelStyle}" />
+
+</Grid>

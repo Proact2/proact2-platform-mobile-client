@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="Proact.UI.DebugMessagePopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BackgroundColor="#80000000">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="700"
+            DurationOut="100"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1"
+            ScaleOut="1" />
+    </pages:PopupPage.Animation>
+
+    <ScrollView HorizontalOptions="Fill" VerticalOptions="End">
+
+        <Frame
+            Margin="0"
+            BackgroundColor="White"
+            CornerRadius="25"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Visual="Material">
+
+            <Grid
+                x:Name="FrameContainer"
+                Padding="5"
+                HorizontalOptions="FillAndExpand"
+                RowSpacing="0"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    FontSize="26"
+                    Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                    Text="Debug Message"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Row="1"
+                    FontSize="20"
+                    Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                    Text="Status code:"
+                    VerticalOptions="Center" />
+
+                <Label
+                    x:Name="StatusCodeLabel"
+                    Grid.Row="2"
+                    FontSize="20"
+                    Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Row="3"
+                    FontSize="20"
+                    Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                    Text="Error Message"
+                    VerticalOptions="Center" />
+
+                <Label
+                    x:Name="ContentLabel"
+                    Grid.Row="4"
+                    FontSize="16"
+                    Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                    VerticalOptions="Center" />
+
+
+            </Grid>
+        </Frame>
+    </ScrollView>
+</pages:PopupPage>

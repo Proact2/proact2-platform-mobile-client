@@ -1,0 +1,161 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="MvvmCross" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.31.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
+    <PackageReference Include="PhotoBrowser.Forms" Version="0.1.4" />
+    <PackageReference Include="Plugin.AudioRecorder" Version="1.1.0" />
+    <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.3.0" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="OneSignalSDK.Xamarin" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Signin\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Validators\" />
+    <Folder Include="Helpers\Validators\Rules\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Services\UI\" />
+    <Folder Include="ViewModels\WallMessages\" />
+    <Folder Include="Models\Users\" />
+    <Folder Include="Services\ProjectsAndMedicalTeams\" />
+    <Folder Include="Models\ProjectAndMedicalTeam\" />
+    <Folder Include="ViewModels\Profile\" />
+    <Folder Include="ViewModels\Popups\" />
+    <Folder Include="Models\Popup\" />
+    <Folder Include="ViewModels\VoiceRecording\" />
+    <Folder Include="Services\PopupService\" />
+    <Folder Include="ViewModels\Players\" />
+    <Folder Include="Services\Permissions\" />
+    <Folder Include="Models\Surveys\" />
+    <Folder Include="ViewModels\Surveys\" />
+    <Folder Include="ViewModels\Surveys\Parameters\" />
+    <Folder Include="ViewModels\Surveys\Questions\" />
+    <Folder Include="ViewModels\WallMessages\Iterfaces\" />
+    <Folder Include="ViewModels\Signin\Interfaces\" />
+    <Folder Include="Models\Messages\Enums\" />
+    <Folder Include="Services\Patients\" />
+    <Folder Include="ViewModels\Patients\" />
+    <Folder Include="Services\Notifications\" />
+    <Folder Include="Models\Notifications\" />
+    <Folder Include="Models\Surveys\AnswersModels\" />
+    <Folder Include="Models\Surveys\QuestionPropertiesModels\" />
+    <Folder Include="Services\Surveys\" />
+    <Folder Include="Models\Surveys\JsonConverter\" />
+    <Folder Include="Models\Surveys\Answers\" />
+    <Folder Include="Models\Surveys\Compiled\" />
+    <Folder Include="Services\Languages\" />
+    <Folder Include="Models\Documents\" />
+
+    <Folder Include="Models\Institute\" />
+    <Folder Include="Services\Institute\" />
+    <Folder Include="Models\Protocols\" />
+    <Folder Include="Services\Protocols\" />
+    <Folder Include="Models\Settings\" />
+    <Folder Include="ViewModels\Surveys\Medic\" />
+    <Folder Include="Models\Surveys\Stats\" />
+    <Folder Include="Models\PushNotification\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AppResources.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AppResources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AppResources.nl.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.nl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AppResources.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AppResources.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\AppResources.en.Designer.cs">
+      <DependentUpon>AppResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppResources.de.Designer.cs">
+      <DependentUpon>AppResources.de.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppResources.nl.Designer.cs">
+      <DependentUpon>AppResources.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppResources.fr.Designer.cs">
+      <DependentUpon>AppResources.fr.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppResources.es.Designer.cs">
+      <DependentUpon>AppResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="PhotoBrowser.Forms" />
+    <None Remove="Models\Popup\" />
+    <None Remove="ViewModels\VoiceRecording\" />
+    <None Remove="Plugin.AudioRecorder" />
+    <None Remove="Services\IPopupService\" />
+    <None Remove="ViewModels\Players\" />
+    <None Remove="Plugin.MediaManager.Forms" />
+    <None Remove="Services\Permissions\" />
+    <None Remove="Models\Surveys\" />
+    <None Remove="ViewModels\Surveys\" />
+    <None Remove="ViewModels\Surveys\Parameters\" />
+    <None Remove="ViewModels\Surveys\Questions\" />
+    <None Remove="ViewModels\WallMessages\Iterfaces\" />
+    <None Remove="ViewModels\Signin\Interfaces\" />
+    <None Remove="Models\Messages\Enums\" />
+    <None Remove="Microsoft.AppCenter.Analytics" />
+    <None Remove="Microsoft.AppCenter.Crashes" />
+    <None Remove="Services\Patients\" />
+    <None Remove="ViewModels\Patients\" />
+    <None Remove="Com.OneSignal" />
+    <None Remove="Services\Notifications\" />
+    <None Remove="Models\Notifications\" />
+    <None Remove="Models\Surveys\AnswersModel\" />
+    <None Remove="Models\Surveys\QuestionProperties\" />
+    <None Remove="Services\Surveys\" />
+    <None Remove="Models\Surveys\JsonConverter\" />
+    <None Remove="Models\Surveys\Answers\" />
+    <None Remove="Models\Surveys\Compiled\" />
+    <None Remove="Services\Languages\" />
+    <None Remove="Models\Documents\" />
+
+    <None Remove="Models\Institute\" />
+    <None Remove="Services\Institute\" />
+    <None Remove="Models\Protocols\" />
+    <None Remove="Services\Protocols\" />
+    <None Remove="Models\ForceUpdate\" />
+    <None Remove="ViewModels\Surveys\Medic\" />
+    <None Remove="Models\Surveys\Stats\" />
+    <None Remove="Microcharts.Forms" />
+    <None Remove="OneSignalSDK.Xamarin" />
+    <None Remove="Models\PushNotification\" />
+  </ItemGroup>
+</Project>

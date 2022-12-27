@@ -1,0 +1,124 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmCross" Version="7.1.2" />
+    <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2012" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
+    <PackageReference Include="PhotoBrowser.Forms" Version="0.1.4" />
+    <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.3.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.7.2" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Proact.Core\Proact.Mobile.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Colors.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Surveys\Partial\SurveyNextButton.xaml.cs">
+      <DependentUpon>SurveyNextButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Surveys\QuestionsPage\SurveyBooleanQuestionPage.xaml.cs">
+      <DependentUpon>SurveyBooleanQuestionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Surveys\QuestionsPage\SurveyMultipleAnswersQuestionPage.xaml.cs">
+      <DependentUpon>SurveyMultipleAnswersQuestionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Surveys\QuestionsPage\SurveyOpenAnswerQuestionPage.xaml.cs">
+      <DependentUpon>SurveyOpenAnswerQuestionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Surveys\QuestionsPage\SurveyRatingQuestionPage.xaml.cs">
+      <DependentUpon>SurveyRatingQuestionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Analysis\CellTemplate\AnalysisNotVisibleViewCell.xaml.cs">
+      <DependentUpon>AnalysisNotVisibleViewCell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Analysis\CellTemplate\AnalysisViewCell.xaml.cs">
+      <DependentUpon>AnalysisViewCell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\WallMessages\Partial\" />
+    <None Remove="TemplateSelctor\" />
+    <None Remove="Pages\WallMessages\ViewCellTemplates\" />
+    <None Remove="PhotoBrowser.Forms" />
+    <None Remove="Pages\VoiceRecording\" />
+    <None Remove="Service\" />
+    <None Remove="Service\PopupService\" />
+    <None Remove="Pages\Player\" />
+    <None Remove="Plugin.MediaManager.Forms" />
+    <None Remove="Pages\WallMessages\RepliesCellTemplates\" />
+    <None Remove="Pages\Surveys\" />
+    <None Remove="Pages\Surveys\Partial\" />
+    <None Remove="Pages\Surveys\QuestionsPage\" />
+    <None Remove="Pages\Surveys\AnswersCellTemplates\" />
+    <None Remove="Microsoft.AppCenter.Analytics" />
+    <None Remove="Microsoft.AppCenter.Crashes" />
+    <None Remove="Pages\WallMessages\Interfaces\" />
+    <None Remove="Pages\Patients\" />
+    <None Remove="SkiaSharp.Views.Forms" />
+    <None Remove="Xamarin.Forms.InputKit" />
+    <None Remove="Behaviours\" />
+    <None Remove="Pages\Surveys\New Folder\" />
+    <None Remove="Controllers\" />
+    <None Remove="Pages\Surveys\Medic\" />
+    <None Remove="Microcharts.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Resources\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Signin\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Partial\" />
+    <Folder Include="Pages\WallMessages\" />
+    <Folder Include="Pages\Profile\" />
+    <Folder Include="Popups\" />
+    <Folder Include="Pages\WallMessages\Partial\" />
+    <Folder Include="TemplateSelctor\" />
+    <Folder Include="Pages\WallMessages\MessagesCellTemplates\" />
+    <Folder Include="Pages\VoiceRecording\" />
+    <Folder Include="Service\" />
+    <Folder Include="Service\PopupService\" />
+    <Folder Include="Pages\Player\" />
+    <Folder Include="Pages\WallMessages\RepliesCellTemplates\" />
+    <Folder Include="Pages\Surveys\" />
+    <Folder Include="Pages\Surveys\Partial\" />
+    <Folder Include="Pages\Surveys\QuestionsPage\" />
+    <Folder Include="Pages\Surveys\AnswersCellTemplates\" />
+    <Folder Include="Pages\WallMessages\Interfaces\" />
+    <Folder Include="Pages\Patients\" />
+    <Folder Include="Behaviours\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Pages\Surveys\Medic\" />
+  </ItemGroup>
+</Project>

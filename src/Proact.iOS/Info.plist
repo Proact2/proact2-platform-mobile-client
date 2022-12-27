@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>PROACT 2.0</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.upsmart.proactbeta</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>10.0</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Media.xcassets/LaunchImages.launchimage</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome5BrandsRegular.otf</string>
+		<string>FontAwesome5Regular.otf</string>
+		<string>FontAwesome5Solid.otf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Bold.ttf</string>
+		<string>Poppins-Light.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
+	</array>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>it</string>
+		<string>en</string>
+		<string>fr</string>
+		<string>es</string>
+		<string>de</string>
+		<string>nl</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>it</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Proact wants to use your location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Proact wants to use your location.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Proact wants to use camera to take photo to add at the message.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Proact wants to access your photo gallery to choose the photo to add to the message.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Proact wants to use your microphone to record audio to add to the message.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Proact wants to access your photo gallery to save the photos.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Proact wants to access your calendar.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msal6ff9f8da-8009-4afa-a94f-29c3f517b3c5</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>ADB2C Auth</string>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>ADB2C Auth Prod</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msal3497007e-fa1e-4c53-ace7-8600ccdcb9a8</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Media.xcassets/AppIcon.appiconset</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>19</string>
+</dict>
+</plist>

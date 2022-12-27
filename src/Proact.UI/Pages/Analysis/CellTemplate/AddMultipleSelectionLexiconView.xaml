@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Proact.UI.AddMultipleSelectionLexiconView"
+      xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+      xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+      xmlns:fontawesome="clr-namespace:FontAwesome"
+      x:DataType="models:LexiconCategoryModel"
+      RowSpacing="10"
+      Padding="10">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Label
+        Grid.Row="0"
+        Text="{Binding Name }"
+        Style="{DynamicResource PrimaryMediumLabelStyle}"
+        FontSize="20" />
+
+    <Label
+        Grid.Row="0"
+        Style="{DynamicResource FontIconStyle}"
+        TextColor="{x:StaticResource AnalysisColor}"
+        FontSize="24"
+        VerticalOptions="Center"
+        HorizontalOptions="End"
+        Text="{x:Static fontawesome:FontAwesomeIcons.Plus}">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:AddAnalysisViewModel}}, Path=OpenLexiconLabelSelectionPageCommand}"
+                CommandParameter="{Binding .}" />
+        </Label.GestureRecognizers>
+    </Label>
+    
+    <BoxView Grid.Row="1"
+             BackgroundColor="{x:StaticResource DividerColor}"/>
+    
+    <StackLayout
+        Grid.Row="2"
+        BindableLayout.ItemsSource="{Binding SelectedLabels}"
+        Orientation="Vertical"
+        Spacing="10" >
+        <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="models:LexiconLabelModel">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Frame
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HeightRequest="40"
+                        CornerRadius="20"
+                        HasShadow="False"
+                        Margin="0"
+                        Padding="0"
+                        VerticalOptions="Center"
+                        BorderColor="{x:StaticResource DividerColor}"
+                        BackgroundColor="{x:StaticResource DividerColor}" >
+                        <Label
+                            Text="{Binding Label }"
+                            HeightRequest="40"
+                            Padding="10,5"
+                            VerticalTextAlignment="Center"
+                            Style="{DynamicResource SecondaryMediumLabelStyle}"
+                            FontSize="16" />
+                    </Frame>
+                    
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{DynamicResource FontIconStyle}"
+                        TextColor="{x:StaticResource AnalysisColor}"
+                        FontSize="22"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Text="{x:Static fontawesome:FontAwesomeIcons.Minus}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:AddAnalysisViewModel}}, Path=RemoveLabelFromMultipleSelectionCategoryCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+               
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+</Grid>

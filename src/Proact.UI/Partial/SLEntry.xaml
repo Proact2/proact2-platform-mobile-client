@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proact.UI.SLEntry">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <!-- Entry -->
+
+        <Entry
+            x:Name="customEntry"
+            Grid.Row="0"
+            Text="{Binding Text}"
+            Style="{x:StaticResource EntryStyle}"/>
+
+        <!-- Icon -->
+
+        <Label
+            x:Name="icon"
+            Grid.Row="0"
+            FontFamily="{x:StaticResource FontAwesomeSolid}"
+            TextColor="{x:DynamicResource SecondaryColor}"
+            HorizontalOptions="End"
+            VerticalOptions="Center"
+            InputTransparent="True"/>
+
+        <!-- Text Error -->
+
+        <Label
+            x:Name="errorLabel"
+            Grid.Row="1"
+            Style="{x:StaticResource ErrorLabelStyle}"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            VerticalOptions="End"
+            HorizontalOptions="End"/>
+
+    </Grid>
+</ContentView>

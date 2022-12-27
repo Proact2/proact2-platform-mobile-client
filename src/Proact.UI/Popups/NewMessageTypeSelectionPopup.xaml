@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="Proact.UI.NewMessageTypeSelectionPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    BackgroundColor="#80000000">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="700"
+            EasingIn="BounceOut"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1"
+            ScaleOut="1" />
+    </pages:PopupPage.Animation>
+
+    <ScrollView HorizontalOptions="Fill" VerticalOptions="End">
+
+        <Frame
+            Margin="0"
+            BackgroundColor="White"
+            CornerRadius="25"
+            HeightRequest="230"
+            HorizontalOptions="FillAndExpand"
+            Visual="Material">
+
+            <Grid>
+
+                <!--  Scope buttons  -->
+
+                <Grid
+                    x:Name="ScopeButtonFrameContainer"
+                    Padding="5"
+                    HorizontalOptions="FillAndExpand"
+                    RowSpacing="5"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+
+                    <local:IconButton
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        ButtonBackgroundColor="#EBF4FF"
+                        CornerRadius="45"
+                        HeightRequest="90"
+                        Icon="{x:Static fontawesome:FontAwesomeIcons.Info}"
+                        IconColor="#341EFB"
+                        IconSize="39"
+                        WidthRequest="90">
+                        <local:IconButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenNewTextMessagePageCommand}" CommandParameter="Info" />
+                        </local:IconButton.GestureRecognizers>
+                    </local:IconButton>
+
+                    <local:IconButton
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        ButtonBackgroundColor="#FFEBF8"
+                        CornerRadius="45"
+                        HeightRequest="90"
+                        Icon="{x:Static fontawesome:FontAwesomeIcons.Heartbeat}"
+                        IconColor="#FE387B"
+                        IconSize="39"
+                        WidthRequest="90">
+                        <local:IconButton.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnHeathScobeButtonTapped" />
+                        </local:IconButton.GestureRecognizers>
+                    </local:IconButton>
+
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{core:Translate InfoMessage}" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{core:Translate HealthMessage}" />
+
+                </Grid>
+
+                <!--  Type buttons  -->
+
+                <Grid
+                    x:Name="TypeButtonContainer"
+                    Padding="5"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="False"
+                    RowSpacing="5"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="42" />
+                    </Grid.RowDefinitions>
+
+                    <local:IconButton
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        ButtonBackgroundColor="#EBF4FF"
+                        CornerRadius="45"
+                        HeightRequest="90"
+                        Icon="{x:Static fontawesome:FontAwesomeIcons.Pen}"
+                        IconColor="#341EFB"
+                        IconSize="39"
+                        WidthRequest="90">
+                        <local:IconButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenNewTextMessagePageCommand}" CommandParameter="Health" />
+                        </local:IconButton.GestureRecognizers>
+                    </local:IconButton>
+
+                    <local:IconButton
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        ButtonBackgroundColor="#F9EDFF"
+                        CornerRadius="45"
+                        HeightRequest="90"
+                        Icon="{x:Static fontawesome:FontAwesomeIcons.Microphone}"
+                        IconColor="#762CFB"
+                        IconSize="39"
+                        WidthRequest="90">
+                        <local:IconButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenNewVoiceMessagePageCommand}" />
+                        </local:IconButton.GestureRecognizers>
+                    </local:IconButton>
+
+                    <local:IconButton
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        ButtonBackgroundColor="#FFEBF8"
+                        CornerRadius="45"
+                        HeightRequest="90"
+                        Icon="{x:Static fontawesome:FontAwesomeIcons.Video}"
+                        IconColor="#FE387B"
+                        IconSize="39"
+                        WidthRequest="90">
+                        <local:IconButton.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenNewVideoMessagePageCommand}" />
+                        </local:IconButton.GestureRecognizers>
+                    </local:IconButton>
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{core:Translate TextTypeMessage}" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{core:Translate VoiceTypeMessage}" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{core:Translate VideoTypeMessage}" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        TranslationY="10"
+                        HeightRequest="42"
+                        FontSize="14"
+                        TextColor="{x:DynamicResource PrimaryTextColor}"
+                        Clicked="OnBackButtonTapped"
+                        HorizontalOptions="Center"
+                        Style="{x:DynamicResource TextOnlyButtonStyle}"
+                        Text="{core:Translate Back}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+
+            </Grid>
+
+
+
+
+
+        </Frame>
+    </ScrollView>
+
+</pages:PopupPage>

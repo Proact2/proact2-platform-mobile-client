@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.LexiconLabelsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:LexiconLabelsListViewModel"
+    BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding OpenGroupsListPageCommand}"
+            Order="Primary"
+            Priority="0"
+            Text="{core:Translate AnalysisGroupButton}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Padding="10"
+                IsVisible="{Binding GroupFilterIsActive}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Column="0"
+                    FontSize="12"
+                    Style="{DynamicResource SecondaryMediumLabelStyle}"
+                    Text="{Binding GroupFilterMessage}" />
+
+                <Button
+                    Grid.Column="1"
+                    BackgroundColor="{x:StaticResource AnalysisColor}"
+                    Command="{Binding RemoveGroupFilterCommand}"
+                    CornerRadius="16"
+                    FontSize="10"
+                    HeightRequest="32"
+                    Style="{DynamicResource MainButtonStyle}"
+                    Text="{core:Translate AnalysisGroupRemoveFilter}"
+                    VerticalOptions="Center"
+                    WidthRequest="150" />
+            </Grid>
+
+            <SearchBar
+                x:Name="LabelSearchBar"
+                Grid.Row="1"
+                Margin="10,0"
+                BackgroundColor="Transparent"
+                PlaceholderColor="{x:StaticResource SecondaryTextColor}"
+                Placeholder="{core:Translate SearchbarPlaceholder}"
+                SearchCommand="{Binding PerformSearchCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference LabelSearchBar}}"
+                Text="{Binding SearchQuery, Mode=TwoWay}"
+                TextChanged="LabelSearchBar_OnTextChanged" />
+
+            <ListView
+                Grid.Row="2"
+                BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+                GroupDisplayBinding="{Binding Key}"
+                GroupShortNameBinding="{Binding Key}"
+                IsGroupingEnabled="True"
+                ItemSelected="ListView_OnItemSelected"
+                ItemsSource="{Binding Labels}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:LexiconLabelModel">
+                        <TextCell Text="{Binding Label}" TextColor="{x:StaticResource PrimaryTextColor}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5" BackgroundColor="{x:StaticResource DividerColor}">
+                                <Label
+                                    Text="{Binding Key}"
+                                    TextColor="{x:StaticResource PrimaryTextColor}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+            </ListView>
+
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

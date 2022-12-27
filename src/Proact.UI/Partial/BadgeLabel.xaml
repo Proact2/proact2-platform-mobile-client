@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.BadgeLabel"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HeightRequest="24">
+
+    <BoxView
+        x:Name="BackgroundView"
+        CornerRadius="12"
+        HeightRequest="24" />
+
+    <Label
+        x:Name="TextLabel"
+        Padding="10,5"
+        FontSize="9"
+        HeightRequest="24"
+        Style="{x:StaticResource PrimaryRegularLabelStyle}"
+        Text="Broadcast"
+        TextColor="White"
+        VerticalOptions="Center"
+        VerticalTextAlignment="Center" />
+</Grid>

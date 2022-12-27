@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.NewTextMessagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:NewTextMessageViewModel"
+    x:DataType="viewModels:NewTextMessageViewModel"
+    BackgroundColor="{DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding ClosePageCommand}"
+            Priority="0"
+            Text="{core:Translate Close}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+
+                <Grid.Padding>
+                    <OnIdiom x:TypeArguments="Thickness">
+                        <OnIdiom.Phone>20</OnIdiom.Phone>
+                        <OnIdiom.Tablet>150,20</OnIdiom.Tablet>
+                    </OnIdiom>
+                </Grid.Padding>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <!--  Errors messages  -->
+                <local:MessageBoxView Grid.Row="0" MessageBoxModel="{Binding MessageBoxModel}" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    HeightRequest="30"
+                    IsVisible="{Binding HealthLabelIsVisible}"
+                    Orientation="Horizontal">
+                    <local:IconButton
+                        ButtonBackgroundColor="Transparent"
+                        CornerRadius="5"
+                        HeightRequest="30"
+                        Icon="{x:Static fontawesome:FontAwesomeIcons.Heartbeat}"
+                        IconColor="#FE387B"
+                        IconSize="24"
+                        WidthRequest="30" />
+
+                    <Label
+                        FontSize="16"
+                        Style="{DynamicResource SecondaryLightLabelStyle}"
+                        Text="{core:Translate HealthMessage}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+
+                <Label
+                    Grid.Row="2"
+                    FontSize="20"
+                    Style="{DynamicResource SecondaryLightLabelStyle}"
+                    Text="{Binding MessageBodyPleceholder}"
+                    VerticalOptions="End" />
+
+                <Label
+                    x:Name="MessageCharsCounter"
+                    Grid.Row="2"
+                    FontSize="14"
+                    HorizontalOptions="End"
+                    Style="{DynamicResource PrimarySemiBoldLabelStyle}"
+                    VerticalOptions="End" />
+
+                <StackLayout Grid.Row="3">
+                    <Editor
+                        x:Name="MessageEditor"
+                        BackgroundColor="White"
+                        Text="{Binding Body}"
+                        TextChanged="EditorTextChanged"
+                        TextColor="{x:DynamicResource SecondaryTextColor}">
+
+                        <Editor.HeightRequest>
+                            <OnIdiom x:TypeArguments="x:Double">
+                                <OnIdiom.Phone>180</OnIdiom.Phone>
+                                <OnIdiom.Tablet>360</OnIdiom.Tablet>
+                            </OnIdiom>
+                        </Editor.HeightRequest>
+
+                    </Editor>
+
+                    <Label
+                        IsVisible="{Binding BodyErrorIsVisible}"
+                        Style="{DynamicResource ErrorLabelStyle}"
+                        Text="{Binding [MessageRequiredError]}" />
+                </StackLayout>
+
+                <Label
+                    Grid.Row="4"
+                    FontSize="20"
+                    IsVisible="{Binding MoodButtonsAreVisible}"
+                    Style="{DynamicResource SecondaryLightLabelStyle}"
+                    Text="{Binding [NewTextMessageMoodPlaceholder]}"
+                    VerticalOptions="End" />
+
+                <Grid Grid.Row="5" IsVisible="{Binding MoodButtonsAreVisible}">
+
+                    <ImageButton
+                        Grid.Column="0"
+                        BorderColor="{x:DynamicResource PrimaryColor}"
+                        BorderWidth="{x:Binding VeryBadButtonBorderWidth}"
+                        Command="{Binding MoodButtonPressedCommand}"
+                        CommandParameter="VeryBad"
+                        HeightRequest="{x:StaticResource MessageMoodButtonSize}"
+                        HorizontalOptions="Center"
+                        Scale="{Binding VeryBadButtonScale}"
+                        Source="btn_moodVeryBad"
+                        VerticalOptions="Center"
+                        WidthRequest="{x:StaticResource MessageMoodButtonSize}" />
+
+                    <ImageButton
+                        Grid.Column="1"
+                        BorderColor="{x:DynamicResource PrimaryColor}"
+                        BorderWidth="{x:Binding BadButtonBorderWidth}"
+                        Command="{Binding MoodButtonPressedCommand}"
+                        CommandParameter="Bad"
+                        HeightRequest="{x:StaticResource MessageMoodButtonSize}"
+                        HorizontalOptions="Center"
+                        Scale="{Binding BadButtonScale}"
+                        Source="btn_moodBad"
+                        VerticalOptions="Center"
+                        WidthRequest="{x:StaticResource MessageMoodButtonSize}" />
+
+                    <ImageButton
+                        Grid.Column="2"
+                        BorderColor="{x:DynamicResource PrimaryColor}"
+                        BorderWidth="{x:Binding GoodButtonBorderWidth}"
+                        Command="{Binding MoodButtonPressedCommand}"
+                        CommandParameter="Good"
+                        HeightRequest="{x:StaticResource MessageMoodButtonSize}"
+                        HorizontalOptions="Center"
+                        Scale="{Binding GoodButtonScale}"
+                        Source="btn_moodGood"
+                        VerticalOptions="Center"
+                        WidthRequest="{x:StaticResource MessageMoodButtonSize}" />
+
+                    <ImageButton
+                        Grid.Column="3"
+                        BorderColor="{x:DynamicResource PrimaryColor}"
+                        BorderWidth="{x:Binding VeryGoodButtonBorderWidth}"
+                        Command="{Binding MoodButtonPressedCommand}"
+                        CommandParameter="VeryGood"
+                        HeightRequest="{x:StaticResource MessageMoodButtonSize}"
+                        HorizontalOptions="Center"
+                        Scale="{Binding VeryGoodButtonScale}"
+                        Source="btn_moodVeryGood"
+                        VerticalOptions="Center"
+                        WidthRequest="{x:StaticResource MessageMoodButtonSize}" />
+                </Grid>
+
+                <Label
+                    Grid.Row="6"
+                    FontSize="20"
+                    Style="{DynamicResource SecondaryLightLabelStyle}"
+                    Text="{Binding [NewTextMessageAttachPhotoPlaceholder]}"
+                    VerticalOptions="End" />
+
+                <Button
+                    Grid.Row="7"
+                    BackgroundColor="White"
+                    Command="{Binding AttachImageCommand}"
+                    HorizontalOptions="Start"
+                    ImageSource="ic_attachImage"
+                    IsVisible="{Binding AttachedImageIsVisible, Converter={StaticResource InverseBoolConverter}}">
+
+                    <Button.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>180</OnIdiom.Phone>
+                            <OnIdiom.Tablet>360</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.HeightRequest>
+
+                    <Button.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>240</OnIdiom.Phone>
+                            <OnIdiom.Tablet>480</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.WidthRequest>
+
+                </Button>
+
+                <Image
+                    Grid.Row="7"
+                    Aspect="AspectFill"
+                    HorizontalOptions="Start"
+                    IsVisible="{Binding AttachedImageIsVisible}"
+                    Source="{Binding AttachImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AttachImageCommand}" />
+                    </Image.GestureRecognizers>
+
+                    <Image.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>180</OnIdiom.Phone>
+                            <OnIdiom.Tablet>360</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Image.HeightRequest>
+
+                    <Image.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>240</OnIdiom.Phone>
+                            <OnIdiom.Tablet>480</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Image.WidthRequest>
+
+                </Image>
+
+                <Button
+                    Grid.Row="9"
+                    Margin="0,20"
+                    Command="{Binding SubmitButtonPressedCommand}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                    Style="{x:DynamicResource MainButtonStyle}"
+                    Text="{core:Translate NewTextMessageSubmitButtonText}" />
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</views:MvxContentPage>

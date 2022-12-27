@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="Proact.UI.Resources.Colors"
+                    xmlns:local="clr-namespace:Proact.UI.Resources">
+
+    <Color x:Key="PrimaryColor">#4051e6</Color>
+    <Color x:Key="PrimaryDarkColor">#0028b3</Color>
+    <Color x:Key="PrimaryLightColor">#7f7dff</Color>
+
+    <Color x:Key="AccentColor">#24b780</Color>
+    <Color x:Key="AccentDarkColor">#008653</Color>
+    <Color x:Key="AccentLightColor">#64eab0</Color>
+
+    <Color x:Key="PrimaryTextColor">#D9000000</Color>
+    <Color x:Key="SecondaryTextColor">#8C000000</Color>
+
+    <Color x:Key="SeparatorColor">#E4E8EC</Color> 
+
+</ResourceDictionary>

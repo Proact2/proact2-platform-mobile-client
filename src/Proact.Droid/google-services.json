@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "838717493689",
+    "firebase_url": "https://slstartupkit.firebaseio.com",
+    "project_id": "slstartupkit",
+    "storage_bucket": "slstartupkit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838717493689:android:f7f7cb3c3b25964acea668",
+        "android_client_info": {
+          "package_name": "com.studioleaves.startupkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838717493689-v7krio3ru1pc5eo6eb7ev0o6vd3jrakh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studioleaves.startupkit",
+            "certificate_hash": "dcc8d2fbc4c003c7bbf441b363e5e625f8886fcd"
+          }
+        },
+        {
+          "client_id": "838717493689-61v3vk8p46hhssacgdibd6o1f2bu9qr9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studioleaves.startupkit",
+            "certificate_hash": "66f7edaffdf70cfddb428cbf07363ce8004598d8"
+          }
+        },
+        {
+          "client_id": "838717493689-59hepuftep9e59mk8pc79dn7jhlrvb7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIre877bXijbSUb_VU1MJoiUDYzQ_0XyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838717493689-59hepuftep9e59mk8pc79dn7jhlrvb7v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "838717493689-n2g1ce9v28kb84ak1aautp08gfdi5bsh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.studioleaves.startupkit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

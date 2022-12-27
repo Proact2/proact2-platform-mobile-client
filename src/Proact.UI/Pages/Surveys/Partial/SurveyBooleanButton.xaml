@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.SurveyBooleanButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    ColumnSpacing="0"
+    HeightRequest="40"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    WidthRequest="300">
+
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="150" />
+        <ColumnDefinition Width="150" />
+    </Grid.ColumnDefinitions>
+
+
+    <Image
+        x:Name="YesButtonImage"
+        Grid.Column="0"
+        Aspect="Fill"
+        Source="btn_boolYesSelected">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnYesButtonTapped" />
+        </Image.GestureRecognizers>
+    </Image>
+
+    <Image
+        x:Name="NoButtonImage"
+        Grid.Column="1"
+        Aspect="Fill"
+        Source="btn_boolNoUnselected">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnNoButtonTapped" />
+        </Image.GestureRecognizers>
+    </Image>
+
+    <Label
+        x:Name="YesButtonLabel"
+        Grid.Column="0"
+        HorizontalOptions="Center"
+        InputTransparent="True"
+        Style="{x:DynamicResource PrimaryRegularLabelStyle}"
+        Text="{core:Translate YesButton}"
+        TextColor="White"
+        VerticalOptions="Center" />
+
+    <Label
+        x:Name="NoButtonLabel"
+        Grid.Column="1"
+        HorizontalOptions="Center"
+        InputTransparent="True"
+        Style="{x:DynamicResource PrimaryRegularLabelStyle}"
+        Text="{core:Translate NoButton}"
+        TextColor="{x:DynamicResource PrimaryColor}"
+        VerticalOptions="Center" />
+
+</Grid>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="Proact.UI.LoadingPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    BackgroundColor="#80000000"
+    CloseWhenBackgroundIsClicked="False">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="700"
+            DurationOut="100"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1"
+            ScaleOut="1" />
+    </pages:PopupPage.Animation>
+
+    <ScrollView HorizontalOptions="Fill" VerticalOptions="End">
+
+        <Frame
+            Margin="0"
+            BackgroundColor="White"
+            CornerRadius="25"
+            HeightRequest="150"
+            HorizontalOptions="FillAndExpand"
+            Visual="Material">
+
+            <Grid
+                x:Name="FrameContainer"
+                Padding="5"
+                HorizontalOptions="FillAndExpand"
+                RowSpacing="5"
+                VerticalOptions="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsEnabled="True"
+                    IsRunning="True"
+                    HeightRequest="36"
+                    WidthRequest="36"
+                    Color="{x:DynamicResource SecondaryTextColor}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                    Text="{core:Translate Waiting}"
+                    VerticalOptions="Center" />
+            </Grid>
+        </Frame>
+    </ScrollView>
+</pages:PopupPage>

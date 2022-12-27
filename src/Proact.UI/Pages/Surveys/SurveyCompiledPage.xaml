@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.SurveyCompiledPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:SurveyCompiledViewModel"
+    BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+
+        <DataTemplate x:Key="SurveyOpenAnswerViewCell" x:DataType="core:SurveyQuestionReviewModel">
+            <local:SurveyOpenAnswerViewCell />
+        </DataTemplate>
+        <DataTemplate x:Key="SurveySingleAnswerViewCell" x:DataType="core:SurveyQuestionReviewModel">
+            <local:SurveySingleAnswerViewCell />
+        </DataTemplate>
+        <DataTemplate x:Key="SurveyMultipleAnswersViewCell" x:DataType="core:SurveyQuestionReviewModel">
+            <local:SurveyMultipleAnswersViewCell />
+        </DataTemplate>
+        <DataTemplate x:Key="SurveyBooleanAnswersViewCell" x:DataType="core:SurveyQuestionReviewModel">
+            <local:SurveyBooleanAnswersViewCell />
+        </DataTemplate>
+        <DataTemplate x:Key="SurveyRatingAnswerViewCell" x:DataType="core:SurveyQuestionReviewModel">
+            <local:SurveyRatingAnswerViewCell />
+        </DataTemplate>
+        <DataTemplate x:Key="SurveyMoodAnswerViewCell" x:DataType="core:SurveyQuestionReviewModel">
+            <local:SurveyMoodAnswerViewCell />
+        </DataTemplate>
+
+        <local:SurveyAnswersTemplateSelection
+            x:Key="surveyAnswersDataTemplateSelector"
+            OpenAnswerTemplate="{StaticResource SurveyOpenAnswerViewCell}"
+            SingleAnswerTemplate="{StaticResource SurveySingleAnswerViewCell}"
+            MultipleAnswersTemplate="{StaticResource SurveyMultipleAnswersViewCell}"
+            BooleanAnswerTemplate="{StaticResource SurveyBooleanAnswersViewCell}"
+            RatingAnswerTemplate="{StaticResource SurveyRatingAnswerViewCell}"
+            MoodAnswerTemplate="{StaticResource SurveyMoodAnswerViewCell}"/>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+            <Grid Padding="10,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+        
+                <CollectionView
+                    Grid.Row="1"
+                    ItemSizingStrategy="MeasureAllItems"                    
+                    ItemTemplate="{x:StaticResource surveyAnswersDataTemplateSelector}"
+                    ItemsSource="{Binding Questions}"
+                    SelectionMode="None" />
+
+                <Button
+                    Grid.Row="2"
+                    Command="{mvx:MvxBind ClosePageCommand}"
+                    Style="{x:DynamicResource MainButtonStyle}"
+                    Text="{core:Translate Close}" />
+
+            </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

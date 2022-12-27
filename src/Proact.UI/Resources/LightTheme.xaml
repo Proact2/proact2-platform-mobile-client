@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    x:Class="Proact.UI.Resources.LightTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--  Main material  -->
+
+    <Color x:Key="NavigationBarColor">#213384</Color>
+    <Color x:Key="NavigationBarTextColor">White</Color>
+
+    <Color x:Key="PageBackgroundColor">White</Color>
+    <Color x:Key="EditorPageBackgroundColor">#F2F3F3</Color>
+    <Color x:Key="ElevationOverlayBackgroundColor">White</Color>
+
+    <Color x:Key="PrimaryColor">#4051e6</Color>
+    <Color x:Key="PrimaryDarkColor">#213384</Color>
+    <Color x:Key="SecondaryColor">#24b780</Color>
+    <Color x:Key="ComplementaryColor">#E8505B</Color>
+
+    <Color x:Key="PrimaryTextColor">#D9000000</Color>
+    <Color x:Key="SecondaryTextColor">#8C000000</Color>
+    <Color x:Key="TextOnPrimaryColor">White</Color>
+    <Color x:Key="TextOnSecondaryColor">White</Color>
+
+    <Color x:Key="DividerColor">#E4E8EC</Color>
+    <Color x:Key="TransparentColor">Transparent</Color>
+
+    <Color x:Key="VoiceRecordingColor">#7D8BFC</Color>
+    <Color x:Key="VoiceRecordingDarkColor">#596AFA</Color>
+
+    <!--  Message box colors  -->
+    <Color x:Key="ErrorTextColor">#D32F2F</Color>
+    <Color x:Key="ErrorBGColor">#80D32F2F</Color>
+    <Color x:Key="WarningColor">#80FFC107</Color>
+    <Color x:Key="WarningColorDark">#725600</Color>
+    <Color x:Key="SuccessTextColor">#1b451d</Color>
+    <Color x:Key="SuccessBGColor">#8BC34A</Color>
+    <Color x:Key="InfoTextColor">#0058C6</Color>
+    <Color x:Key="InfoBGColor">#805784FA</Color>
+
+    <!-- Buttons -->
+    <Color x:Key="LandingButtonColor">#0044D6</Color>
+
+    <!--  App specific  -->
+
+    <Color x:Key="SigninPageBackgroundColor">#3D6DC8</Color>
+
+    <!--  Wall messages  -->
+
+    <Color x:Key="TextMessageIconButtonColor">#213384</Color>
+    <Color x:Key="TextMessageBGButtonColor">#EBF4FF</Color>
+    <Color x:Key="VoiceMessageIconButtonColor">#762CFB</Color>
+    <Color x:Key="VoiceMessageBGButtonColor">#F9EDFF</Color>
+    <Color x:Key="VideoMessageIconButtonColor">#FE387B</Color>
+    <Color x:Key="VideoMessageBGButtonColor">#FFEBF8</Color>
+    <Color x:Key="BroadcastBGColor">#C3F8F5</Color>
+    
+    <!-- Analysis -->
+    <Color x:Key="AnalysisColor">#C91871</Color>
+
+</ResourceDictionary>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.HeaderView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    Padding="20,10"
+    BackgroundColor="White"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="Center">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="20" />
+        <RowDefinition Height="44" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="auto" />
+    </Grid.ColumnDefinitions>
+
+    <Image
+        Grid.Row="1"
+        Grid.Column="0"
+        HeightRequest="18"
+        Source="ic_title"
+        VerticalOptions="Center" />
+
+    <Label
+        x:Name="SearchButton"
+        Grid.Row="1"
+        Grid.Column="2"
+        FontSize="20"
+        HeightRequest="38"
+        HorizontalTextAlignment="End"
+        Style="{x:StaticResource FontIconStyle}"
+        Text="{x:Static fontawesome:FontAwesomeIcons.Search}"
+        TextColor="{x:StaticResource PrimaryDarkColor}"
+        WidthRequest="38" />
+
+    <BoxView
+        x:Name="ProfileTapAnchor"
+        Grid.Row="0"
+        Grid.RowSpan="2"
+        Grid.Column="3"
+        Grid.ColumnSpan="2" />
+
+    <Image
+        x:Name="sideMenuIcon"
+        Grid.Row="1"
+        Grid.Column="3"
+        InputTransparent="True"
+        Source="ic_sideMenu_c" />
+    <Image
+        x:Name="sideMenuBadge"
+        Grid.Row="1"
+        Grid.Column="3"
+        InputTransparent="True"
+        IsVisible="False"
+        Source="ic_sideMenuBadge" />
+
+    <local:RoundedCornerImageView
+        x:Name="profileImage"
+        Grid.Row="1"
+        Grid.Column="4"
+        CornerRadius="17"
+        HasShadow="True"
+        HorizontalOptions="Center"
+        ImageHeight="34"
+        ImageWidth="34"
+        InputTransparent="True"
+        VerticalOptions="Center" />
+
+</Grid>

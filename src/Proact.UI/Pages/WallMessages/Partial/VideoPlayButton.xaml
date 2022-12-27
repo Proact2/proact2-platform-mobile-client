@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.VideoPlayButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome">
+
+    <Image
+        Aspect="AspectFill"
+        BackgroundColor="Black"
+        HeightRequest="64"
+        Source="{Binding Attachment.ThumbnailUrl}"
+        WidthRequest="96" />
+
+    <Label
+        FontSize="26"
+        HeightRequest="40"
+        HorizontalOptions="Center"
+        InputTransparent="True"
+        Style="{x:DynamicResource FontIconStyle}"
+        Text="{x:Static fontawesome:FontAwesomeIcons.PlayCircle}"
+        TextColor="#80FFFFFF"
+        VerticalOptions="Center"
+        WidthRequest="40" />
+
+</Grid>

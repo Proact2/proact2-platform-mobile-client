@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:DataType="viewModels:ProfileViewModel"
+    x:TypeArguments="viewModels:ProfileViewModel"
+    BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Button
+                    Margin="10"
+                    Command="{x:Binding ClosePageCommand}"
+                    FontSize="24"
+                    HeightRequest="44"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding CloseButtonIsVisible}"
+                    Style="{x:DynamicResource FontIconButtonStyle}"
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Times}"
+                    WidthRequest="44" />
+
+                <StackLayout Grid.Row="1" Margin="20">
+                    <local:ImageProfileEditView EditImageCommand="{Binding TakeImageProfileCommand}" ImageSource="{Binding UserImageSource}" />
+                    <Label
+                        FontSize="27"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                        Text="{Binding CompleteName}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Spacing="0">
+
+                    <local:OptionRowItemView
+                        GroupTitleText="{core:Translate MedicalTeamGroupTitle}"
+                        IsVisible="{Binding IsPatientProfile, Converter={StaticResource InverseBoolConverter}}"
+                        Text="{core:Translate ChangeMedicalTeamAndTrialTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="changeMedicalTeam" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <local:OptionRowItemView IsVisible="{Binding IsMedicOrNurseProfile}" Text="{core:Translate YourPatientsTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="yourPatients" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <local:OptionRowItemView
+                        BadgeText="{Binding SurveysToBeFillCount}"
+                        GroupTitleText="{core:Translate SurveysGroupTitle}"
+                        IsVisible="{Binding SurveysGroupIsVisible}"
+                        Text="{core:Translate SurveysToBeFillTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="surveysToBeFill" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <local:OptionRowItemView
+                        BadgeText="{Binding SurveysFilledInCount}"
+                        IsVisible="{Binding SurveysGroupIsVisible}"
+                        Text="{core:Translate SurveysFilledInTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="surveysFilledIn" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <local:OptionRowItemView
+                        BadgeText="{Binding SurveysFilledInCount}"
+                        GroupTitleText="{core:Translate SurveysGroupTitle}"
+                        IsVisible="{Binding IsMedicOrNurseProfile}"
+                        Text="{core:Translate SurveysResultsAndStatistics}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="projectSurveys" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <!--  Protocol  -->
+
+                    <local:OptionRowItemView
+                        CaptionText="{Binding ProtocolInternationalCode}"
+                        GroupTitleText="{core:Translate ProtocolDetailsGroupTitle}"
+                        IsVisible="{Binding IsPatientProfile}"
+                        SubtitleText="{Binding ProtocolInternalCode}"
+                        Text="{Binding ProtocolName}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="protocol" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <!--  Notifications  -->
+
+                    <Grid>
+                        <local:OptionRowItemView
+                            GroupTitleText="{core:Translate NotificationsGroupTitle}"
+                            RightIconIsVisible="False"
+                            Text="{core:Translate AllowNotifications}" />
+
+                        <Switch
+                            Margin="10,50,10,0"
+                            HorizontalOptions="End"
+                            IsToggled="{Binding NotificationsEnable}"
+                            IsVisible="{Binding NotificationsSettingsLoading, Converter={StaticResource InverseBoolConverter}}"
+                            VerticalOptions="Center">
+                            <Switch.Behaviors>
+                                <local:SwitchBehavior Command="{Binding EnableNotificationsCommand}" />
+                            </Switch.Behaviors>
+                        </Switch>
+
+                        <ActivityIndicator
+                            Margin="10,50,10,0"
+                            HorizontalOptions="End"
+                            IsRunning="{Binding NotificationsSettingsLoading}"
+                            IsVisible="{Binding NotificationsSettingsLoading}"
+                            Style="{x:DynamicResource ActivityIndicatorStyle}"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+
+                    <local:OptionRowItemView
+                        IsVisible="{Binding NotificationsEnable}"
+                        SubtitleText="{Binding NotificationTimeLabelText}"
+                        Text="{core:Translate NotificationsReceivingTime}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="openPushNotificationSettings" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+
+                    <!--  HELPDESK  -->
+
+                    <local:OptionRowItemView
+                        GroupTitleText="{core:Translate HelpDeskGroupTitle}"
+                        IsVisible="{Binding IsPatientProfile}"
+                        Text="{core:Translate ContactTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="contact" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <!--  Terms and conditions  -->
+
+                    <local:OptionRowItemView
+                        GroupTitleText="{core:Translate ProactInfoGroupTitle}"
+                        IsVisible="{Binding TermsAndConditionsIsVisible}"
+                        Text="{Binding TermsAndConditionsTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="termsAndConditions" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+
+                    <local:OptionRowItemView IsVisible="{Binding PrivacyPolicyIsVisible}" Text="{Binding PrivacyPolicyTitle}">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="privacyPolicy" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Row="3"
+                    Margin="0,30,0,10"
+                    Spacing="20">
+
+                    <local:OptionRowItemView
+                        GroupTitleText="{core:Translate LogoutGroupTitle}"
+                        RightIcon="{x:Static fontawesome:FontAwesomeIcons.SignInAlt}"
+                        RightIconColor="Red"
+                        RightIconSize="26"
+                        Text="{core:Translate ExitTitle}"
+                        TextColor="Red">
+                        <local:OptionRowItemView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OptionsCommand}" CommandParameter="signout" />
+                        </local:OptionRowItemView.GestureRecognizers>
+                    </local:OptionRowItemView>
+
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{Binding ProactAppVersion}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+                <Image
+                    Grid.Row="4"
+                    Margin="0,0,0,20"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Source="ic_upsmart"
+                    VerticalOptions="Center" />
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</views:MvxContentPage>

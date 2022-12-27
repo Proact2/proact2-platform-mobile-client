@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Image
+    x:Class="Proact.UI.ImageGalleryButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Aspect="AspectFill"
+    BackgroundColor="Black"
+    VerticalOptions="Start"
+    Source="{Binding Attachment.ThumbnailUrl}"
+    WidthRequest="96">
+
+    <Image.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double">
+            <OnIdiom.Phone>64</OnIdiom.Phone>
+            <OnIdiom.Tablet>128</OnIdiom.Tablet>
+        </OnIdiom>
+    </Image.HeightRequest>
+
+</Image>

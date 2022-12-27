@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.SurveyBooleanQuestionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:SurveyBooleanQuestionViewModel"
+    BackgroundColor="{DynamicResource EditorPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <local:SurveyBackButton Grid.Row="0" IsVisible="{Binding EditMode, Converter={StaticResource InverseBoolConverter}}" />
+
+                <!--<local:SurveyTitleView Grid.Row="1" />-->
+
+                <Frame Grid.Row="2" Style="{x:DynamicResource OverlayFrame}">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <local:SurveyQuestionHeaderView Grid.Row="0" />
+
+                        <Label
+                            Grid.Row="2"
+                            Style="{x:DynamicResource PrimaryRegularLabelStyle}"
+                            Text="{core:Translate SurveySingleAswerPlaceholder}" />
+
+                        <local:SurveyBooleanButton
+                            Grid.Row="3"
+                            Margin="0,40"
+                            Value="{Binding BooleanAnswer}" />
+
+                        <local:SurveyNextButton
+                            Grid.Row="4"
+                            HorizontalOptions="End"
+                            IsVisible="{Binding EditMode, Converter={StaticResource InverseBoolConverter}}" />
+
+                        <Button
+                            Grid.Row="4"
+                            Margin="0,20,0,0"
+                            Command="{Binding EditQuestionCommand}"
+                            IsVisible="{Binding EditMode}"
+                            Style="{x:DynamicResource MainButtonStyle}"
+                            Text="{core:Translate Edit}" />
+
+                        <Label
+                            Grid.Row="5"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"
+                            IsVisible="{Binding ErrorIsVisible}"
+                            Style="{DynamicResource ErrorLabelStyle}"
+                            Text="{core:Translate SelectAnswerError}" />
+
+                    </Grid>
+
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</views:MvxContentPage>

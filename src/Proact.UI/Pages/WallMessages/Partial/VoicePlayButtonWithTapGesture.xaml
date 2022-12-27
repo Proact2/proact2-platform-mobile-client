@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Label
+    x:Class="Proact.UI.VoicePlayButtonWithTapGesture"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    FontSize="36"
+    HeightRequest="40"
+    HorizontalOptions="Center"
+    Style="{x:DynamicResource FontIconStyle}"
+    Text="{x:Static fontawesome:FontAwesomeIcons.PlayCircle}"
+    TextColor="{x:DynamicResource VoiceRecordingColor}"
+    VerticalOptions="Center"
+    WidthRequest="40">
+
+    <Label.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:WallMessageDetailsViewModel}}, Path=ShowAttachmentCommand}" CommandParameter="{Binding .}" />
+    </Label.GestureRecognizers>
+
+</Label>

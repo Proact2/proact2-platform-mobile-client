@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.AnalysisPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:AnalysisListViewModel"
+    x:DataType="viewModels:AnalysisListViewModel"
+    BackgroundColor="{x:DynamicResource EditorPageBackgroundColor}"
+    Title="{Binding PageTitle}"
+    NavigationPage.HasNavigationBar="True">
+    
+    <ContentPage.Resources>
+        <DataTemplate x:Key="NotVisibleTemplate">
+            <local:AnalysisNotVisibleViewCell/>
+        </DataTemplate>
+        <DataTemplate x:Key="VisibleTemplate">
+            <local:AnalysisViewCell />
+        </DataTemplate>
+        <local:AnalysisCellTemplateSelector
+            x:Key="AnalysisTemplateSelector"
+            VisibleTemplate="{StaticResource VisibleTemplate}"
+            NotVisibleTemplate="{StaticResource NotVisibleTemplate}" />
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid>
+            <ActivityIndicator
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                Style="{DynamicResource ActivityIndicatorStyle}"/>
+            
+            <Label 
+                IsVisible="{Binding IsLisEmpty}"
+                Text="{core:Translate EmptyList}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{DynamicResource SecondaryMediumLabelStyle}"/>
+            
+            <RefreshView
+                Command="{Binding ListRefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
+                RefreshColor="{x:DynamicResource PrimaryTextColor}">
+                <CollectionView
+                    x:Name="AnalysisCollectionView"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemTemplate="{x:StaticResource AnalysisTemplateSelector}"
+                    ItemsSource="{Binding Analysis}"
+                    SelectionMode="None" />
+            </RefreshView>
+            
+            <Button
+                ImageSource="ic_add_white.png"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Command="{Binding AddAnalysisCommand}"
+                Style="{DynamicResource FloatingActionButtonStyle}"
+                BackgroundColor="{x:StaticResource AnalysisColor}"/>
+            
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

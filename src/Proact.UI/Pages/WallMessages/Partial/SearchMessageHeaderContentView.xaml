@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Proact.UI.SearchMessageHeaderContentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:DataType="models:MessagesContainer">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="66" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Ellipse
+                mvx:Bi.nd="Stroke AvatarStrokeColor"
+                HeightRequest="64"
+                HorizontalOptions="Center"
+                StrokeThickness="4"
+                VerticalOptions="Center"
+                WidthRequest="64" />
+
+            <local:RoundedCornerImageView
+                mvx:Bi.nd="ImageSource AvatarUrl"
+                CornerRadius="25"
+                HasShadow="False"
+                ImageHeight="50"
+                ImageWidth="50" />
+
+            <StackLayout
+                Grid.Column="1"
+                Spacing="2"
+                VerticalOptions="Center">
+                <Label mvx:Bi.nd="Text AuthorName" Style="{DynamicResource MessageAuthorStyle}" />
+                <Label mvx:Bi.nd="Text FormattedCreationDatetime" Style="{DynamicResource MessageDatetimeStyle}" />
+            </StackLayout>
+
+            <local:IconButton
+                Grid.Column="2"
+                mvx:Bi.nd="IsVisible MessageScopeInfoIsVisible"
+                ButtonBackgroundColor="White"
+                CornerRadius="5"
+                HeightRequest="30"
+                Icon="{x:Static fontawesome:FontAwesomeIcons.InfoCircle}"
+                IconColor="#341EFB"
+                IconSize="20"
+                WidthRequest="30" />
+
+            <local:IconButton
+                Grid.Column="2"
+                mvx:Bi.nd="IsVisible MessageScopeHealthIsVisible"
+                ButtonBackgroundColor="White"
+                CornerRadius="5"
+                HeightRequest="30"
+                Icon="{x:Static fontawesome:FontAwesomeIcons.Heartbeat}"
+                IconColor="#FE387B"
+                IconSize="20"
+                WidthRequest="30" />
+
+            <Image
+                Grid.Column="3"
+                mvx:Bi.nd="Source EmotionImageSource; IsVisible OriginalMessage.EmotionIsVisible"
+                HeightRequest="38"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="38" />
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddAnalysisAlertConfirmButton" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="AddAnalysisAlertMessage" xml:space="preserve">
+    <value>Ajouter cette analyse ?</value>
+  </data>
+  <data name="AddAnalysisAlertTitle" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="AddAnalysisButton" xml:space="preserve">
+    <value>ANALYSE</value>
+  </data>
+  <data name="AddAnalysisButtonText" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="AddAnalysisMessageError" xml:space="preserve">
+    <value>Un problème est survenu durant la sauvegarde. Veuillez réessayer.</value>
+  </data>
+  <data name="AddAnalysisPageTitle" xml:space="preserve">
+    <value>Nouvelle analyse</value>
+  </data>
+  <data name="AddAnalysisSuccessAlertMessage" xml:space="preserve">
+    <value>Votre analyse a été sauvegardée.</value>
+  </data>
+  <data name="AddAnalysisValidationError" xml:space="preserve">
+    <value>Sélectionner au moins un élément.</value>
+  </data>
+  <data name="AllMessages" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="AllowNotifications" xml:space="preserve">
+    <value>Autoriser les notifications</value>
+  </data>
+  <data name="AnalysisDeleteAlertMessage" xml:space="preserve">
+    <value>Supprimer cette analyse ?</value>
+  </data>
+  <data name="AnalysisDeleteAlertTitle" xml:space="preserve">
+    <value>Confirmer suppression</value>
+  </data>
+  <data name="AnalysisDeleteErrorMessage" xml:space="preserve">
+    <value>Un problème est survenu durant la suppression. Veuillez réessayer.</value>
+  </data>
+  <data name="AnalysisGroupButton" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
+  <data name="AnalysisGroupFilterActiveMessage" xml:space="preserve">
+    <value>Vous visualisez uniquement les éléments de la catégorie "{0}".</value>
+  </data>
+  <data name="AnalysisGroupPageTitle" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
+  <data name="AnalysisGroupRemoveFilter" xml:space="preserve">
+    <value>Supprimer filtre</value>
+  </data>
+  <data name="AnalysisLabelAlreadyExistAlertMessage" xml:space="preserve">
+    <value>Cet élément a déjà été ajouté.</value>
+  </data>
+  <data name="AnalysisListPageTitle" xml:space="preserve">
+    <value>Analyse</value>
+  </data>
+  <data name="AppVersion" xml:space="preserve">
+    <value>v. {0}({1})</value>
+  </data>
+  <data name="AttachAnImageToTextMessage" xml:space="preserve">
+    <value>Joindre une image au message</value>
+  </data>
+  <data name="AuthenticationError" xml:space="preserve">
+    <value>Erreur d’authentification :</value>
+  </data>
+  <data name="AuthErrorInvalidMedicalTeam" xml:space="preserve">
+    <value>Medical team result non valide.</value>
+  </data>
+  <data name="AuthErrorInvalidProject" xml:space="preserve">
+    <value>Invalid Project result.</value>
+  </data>
+  <data name="AuthErrorNoMedicalTeamAssociated" xml:space="preserve">
+    <value>Aucune Équipe médicale associée au patient.</value>
+  </data>
+  <data name="AuthErrorNoProjectAssociated" xml:space="preserve">
+    <value>Aucun projet associé au patient</value>
+  </data>
+  <data name="AuthErrorTitle" xml:space="preserve">
+    <value>Erreur d'authentification</value>
+  </data>
+  <data name="AuthErrorUserInactive" xml:space="preserve">
+    <value>Votre utilisateur est désactivé, vous ne pouvez accéder à l'application.</value>
+  </data>
+  <data name="AuthErrorUserNotAuthorized" xml:space="preserve">
+    <value>Utilisateur non autorisé à utiliser l'application</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="BodyMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="BradcastMessageInfo" xml:space="preserve">
+    <value>Un message Broadcast est visible par tous les patients et spécialistes de votre équipe médicale.</value>
+  </data>
+  <data name="BradcastMessagePageTitle" xml:space="preserve">
+    <value>Message Broadcast</value>
+  </data>
+  <data name="BroadcastType" xml:space="preserve">
+    <value>Broadcast</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="CantAnalyzeMessageAlertMessage" xml:space="preserve">
+    <value>Vous devez attendre {0} minutes après l'envoi du message du patient.</value>
+  </data>
+  <data name="CantAnalyzeMessageAlertTitle" xml:space="preserve">
+    <value>Vous ne pouvez pas analyser ce message.</value>
+  </data>
+  <data name="CantReplyToMessageAlertMessage" xml:space="preserve">
+    <value>Vous devez attendre {0} minutes après l'envoi du message du patient.</value>
+  </data>
+  <data name="CantReplyToMessageAlertTitle" xml:space="preserve">
+    <value>Vous ne pouvez pas répondre au message.</value>
+  </data>
+  <data name="ChangeMedicalTeamAndTrialTitle" xml:space="preserve">
+    <value>Changer l'étude et Équipe médicale</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="CommentType" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="CompletedSurveysPageTitle" xml:space="preserve">
+    <value>Questionnaires complétés</value>
+  </data>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuer</value>
+  </data>
+  <data name="DaysSpan" xml:space="preserve">
+    <value>j</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="DeleteMessageDialogMessage" xml:space="preserve">
+    <value>Supprimer ce message ?</value>
+  </data>
+  <data name="DeleteMessageDialogTitle" xml:space="preserve">
+    <value>Supprimer message</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="EditAnalysisPageTitle" xml:space="preserve">
+    <value>Modifier analyse</value>
+  </data>
+  <data name="EditTextMessagePageTitle" xml:space="preserve">
+    <value>Modifier un message</value>
+  </data>
+  <data name="EmptyComiledSurveysList" xml:space="preserve">
+    <value>Aucun questionnaire</value>
+  </data>
+  <data name="EmptyList" xml:space="preserve">
+    <value>Aucun élément à afficher</value>
+  </data>
+  <data name="EmptyMedicalTeamsListMessage" xml:space="preserve">
+    <value>Aucune Équipe médicale à afficher</value>
+  </data>
+  <data name="EmptyNotComiledSurveysList" xml:space="preserve">
+    <value>Aucun questionnaire</value>
+  </data>
+  <data name="EmptyPatientsListMessage" xml:space="preserve">
+    <value>Aucun patient associé à cette Équipe médicale</value>
+  </data>
+  <data name="EmptyProjectsListMessage" xml:space="preserve">
+    <value>Aucun essai clinique à afficher</value>
+  </data>
+  <data name="EmptySearchMessageResult" xml:space="preserve">
+    <value>Aucun message trouvé</value>
+  </data>
+  <data name="EmptyWallMessagesMessage" xml:space="preserve">
+    <value>Aucun message à afficher</value>
+  </data>
+  <data name="EnterAnswerError" xml:space="preserve">
+    <value>Saisir une réponse.</value>
+  </data>
+  <data name="ExitTitle" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="GenericLoadingError" xml:space="preserve">
+    <value>Un problème est survenu durant le chargement.</value>
+  </data>
+  <data name="HealthMessage" xml:space="preserve">
+    <value>Votre état de santé</value>
+  </data>
+  <data name="HelpDeskGroupTitle" xml:space="preserve">
+    <value>BESOIN D’AIDE ?</value>
+  </data>
+  <data name="HelpDeskPhoneSubtitle" xml:space="preserve">
+    <value>{0}-{1} de {2} à {3}</value>
+  </data>
+  <data name="HoursSpan" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="InfoMessage" xml:space="preserve">
+    <value>Informations ou rendez-vous</value>
+  </data>
+  <data name="LandingStartButton" xml:space="preserve">
+    <value>Commencer</value>
+  </data>
+  <data name="LicenseButtonText" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="LicenseTitle" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="LogoutGroupTitle" xml:space="preserve">
+    <value>QUITTER</value>
+  </data>
+  <data name="MediaUploadInitializeAlert" xml:space="preserve">
+    <value>Chargement en cours, suivre la progression via la notification.</value>
+  </data>
+  <data name="MedicalTeamGroupTitle" xml:space="preserve">
+    <value>ETUDE ET ÉQUIPE MÉDICALE</value>
+  </data>
+  <data name="MedicalTeamsListPageTitle" xml:space="preserve">
+    <value>Vos Équipes médicales</value>
+  </data>
+  <data name="MedicalTeamsListRequestError" xml:space="preserve">
+    <value>Impossible de trouver une équipe médicale associée à votre utilisateur</value>
+  </data>
+  <data name="MessageDetailsPageTitle" xml:space="preserve">
+    <value>Message complet</value>
+  </data>
+  <data name="MessageRequiredError" xml:space="preserve">
+    <value>Saisir le corps du message</value>
+  </data>
+   <data name="MessageSentSuccessfullyAlert" xml:space="preserve">
+    <value>Message envoyé</value>
+  </data>
+  <data name="VideoMessageSentSuccessfullyAlert" xml:space="preserve">
+    <value>Message envoyé. Vous serez averti lorsque votre vidéo sera prête à être visionnée.</value>
+  </data>
+  <data name="MessageUploading" xml:space="preserve">
+    <value>Chargement du message en cours...</value>
+  </data>
+  <data name="MessageWithVideoAttachmentTitle" xml:space="preserve">
+    <value>Message vidéo</value>
+  </data>
+  <data name="MessageWithVoiceAttachmentTitle" xml:space="preserve">
+    <value>Message vocal</value>
+  </data>
+  <data name="MicrophonePermissionExceptionMessage" xml:space="preserve">
+    <value>Assurez-vous d’avoir autorisé l'utilisation du microphone. Ouvrir les paramètres et autoriser l'application à accéder au microphone.</value>
+  </data>
+  <data name="MicrophonePermissionExceptionTitle" xml:space="preserve">
+    <value>Impossible d’accéder au microphone.</value>
+  </data>
+  <data name="MinutesSpan" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="NewBroadcastMessageButton" xml:space="preserve">
+    <value>Nouveau message
+broadcast</value>
+  </data>
+  <data name="NewMessageButton" xml:space="preserve">
+    <value>Nouveau sujet</value>
+  </data>
+  <data name="NewMessageErrorMessage" xml:space="preserve">
+    <value>Veuillez réessayer</value>
+  </data>
+  <data name="NewMessageErrorTitle" xml:space="preserve">
+    <value>Impossible d'envoyer le message</value>
+  </data>
+  <data name="NewMessages" xml:space="preserve">
+    <value>Nouveaux</value>
+  </data>
+  <data name="NewTextMessageAttachPhotoPlaceholder" xml:space="preserve">
+    <value>Joindre une photo ?</value>
+  </data>
+  <data name="NewTextMessageMoodPlaceholder" xml:space="preserve">
+    <value>Comment vous sentez-vous aujourd’hui ?</value>
+  </data>
+  <data name="NewTextMessagePageTitle" xml:space="preserve">
+    <value>Nouveau message</value>
+  </data>
+  <data name="NewTextMessagePlaceholder" xml:space="preserve">
+    <value>Décrivez comment vous vous sentez</value>
+  </data>
+  <data name="NewTextMessageSubmitButtonText" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>NON</value>
+  </data>
+  <data name="NotDeletableMessageAlertMessage" xml:space="preserve">
+    <value>Le message a été envoyé à l'équipe médicale et ne peut plus être supprimé.</value>
+  </data>
+  <data name="NotDeletableMessageAlertTitle" xml:space="preserve">
+    <value>Le message ne peut être supprimé.</value>
+  </data>
+  <data name="NotificationMediaUploadTitle" xml:space="preserve">
+    <value>PROACT 2.0</value>
+  </data>
+  <data name="NotificationMessageMediaUploaded" xml:space="preserve">
+    <value>Chargement complété.</value>
+  </data>
+  <data name="NotificationMessageMediaUploading" xml:space="preserve">
+    <value>Chargement du message en cours.</value>
+  </data>
+  <data name="NotificationMessageMediaVerification" xml:space="preserve">
+    <value>Vérification du message.</value>
+  </data>
+  <data name="NotificationSettingsInfo" xml:space="preserve">
+    <value>Vous recevrez des notifications push uniquement durant la plage horaire que vous avez sélectionnée.</value>
+  </data>
+  <data name="NotificationSettingsPageTitle" xml:space="preserve">
+    <value>Paramètres notifications</value>
+  </data>
+  <data name="NotificationsGroupTitle" xml:space="preserve">
+    <value>NOTIFICATIONS</value>
+  </data>
+  <data name="NotificationsOptionsPageTitle" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="NotificationsReceivingTime" xml:space="preserve">
+    <value>Horaire de réception des notifications</value>
+  </data>
+  <data name="NotificationsTimeFrom" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="NotificationsTimeTo" xml:space="preserve">
+    <value>À</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>Ouvrir les paramètres</value>
+  </data>
+  <data name="PatientDetailsMediaList" xml:space="preserve">
+    <value>Médias envoyés par le patient</value>
+  </data>
+  <data name="PatientDetailsSurveysCompleted" xml:space="preserve">
+    <value>Questionnaires complétés</value>
+  </data>
+  <data name="PatientsListRequestError" xml:space="preserve">
+    <value>Impossible de trouver des patients associés à votre utilisateur</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="PickPhoto" xml:space="preserve">
+    <value>Sélectionner une photo</value>
+  </data>
+  <data name="PickPhotoPermissionExceptionMessage" xml:space="preserve">
+    <value>Ouvrir les paramètres et autoriser l’app à accéder aux photos.</value>
+  </data>
+  <data name="PickPhotoUnsupportedMessage" xml:space="preserve">
+    <value>Assurez-vous avoir autorisé l'utilisation des photos.</value>
+  </data>
+  <data name="PickPhotoUnsupportedTitle" xml:space="preserve">
+    <value>Impossible d'accéder aux photos.</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="PrivacyPolicyButtonText" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
+  <data name="PrivacyPolicyError" xml:space="preserve">
+    <value>Veuillez lire et accepter notre Politique de confidentialité.</value>
+  </data>
+  <data name="PrivacyPolicyTitle" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
+  <data name="ProactInfoGroupTitle" xml:space="preserve">
+    <value>INFORMATIONS SUR PROACT 2.0</value>
+  </data>
+  <data name="ProfilePageTitle" xml:space="preserve">
+    <value>Mon profil</value>
+  </data>
+  <data name="ProjectsListPageTitle" xml:space="preserve">
+    <value>Essais cliniques</value>
+  </data>
+  <data name="ProjectsListRequestError" xml:space="preserve">
+    <value>Impossible de trouver un essai clinique associé à votre utilisateur</value>
+  </data>
+  <data name="ProtocolDetailsGroupTitle" xml:space="preserve">
+    <value>VOTRE PROTOCOLE</value>
+  </data>
+  <data name="ProtocolInternalCode" xml:space="preserve">
+    <value>Code interne : {0}</value>
+  </data>
+  <data name="ProtocolInternationalCode" xml:space="preserve">
+    <value>Code international : {0}</value>
+  </data>
+  <data name="PushNotificationsSettingsValidateError" xml:space="preserve">
+    <value>La plage horaire n'est pas valide. L'heure de début ne peut être postérieure à l'heure de fin.</value>
+  </data>
+  <data name="Recording" xml:space="preserve">
+    <value>Enregistrement en cours...</value>
+  </data>
+  <data name="RemoveAttachedImage" xml:space="preserve">
+    <value>Supprimer l’image jointe</value>
+  </data>
+  <data name="RemoveProfileImage" xml:space="preserve">
+    <value>Supprimer l’image du profil</value>
+  </data>
+  <data name="RemovePushNotificationTimeLimit" xml:space="preserve">
+    <value>Supprimer la limite d’horaire</value>
+  </data>
+  <data name="ReplyTextMessagePageTitle" xml:space="preserve">
+    <value>Répondre au message</value>
+  </data>
+  <data name="ReplyTextMessagePlaceholder" xml:space="preserve">
+    <value>Écrire un message...</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="SearchbarPlaceholder" xml:space="preserve">
+    <value>Rechercher...</value>
+  </data>
+  <data name="SearchPagePlaceholder" xml:space="preserve">
+    <value>Saisir le texte à rechercher dans les messages et commentaires</value>
+  </data>
+  <data name="SearchPageTitle" xml:space="preserve">
+    <value>Recherche des messages</value>
+  </data>
+  <data name="SecondsSpan" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="SelectAnswerError" xml:space="preserve">
+    <value>Sélectionner une réponse.</value>
+  </data>
+  <data name="SelectProfileImage" xml:space="preserve">
+    <value>Sélectionner l’image de votre profil</value>
+  </data>
+  <data name="SendVoiceMessageAlertMessage" xml:space="preserve">
+    <value>Vous avez enregistré un message vocal. Envoyer ?</value>
+  </data>
+  <data name="SendVoiceMessageAlertTitle" xml:space="preserve">
+    <value>Envoyer le message</value>
+  </data>
+  <data name="SendVoiceMessageConfirmButton" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="ShowAllReplyButtonText" xml:space="preserve">
+    <value>Voir tous les commentaires</value>
+  </data>
+  <data name="SignoutAlertCancelButton" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="SignoutAlertMessage" xml:space="preserve">
+    <value>Quitter PROACT 2.0 ?</value>
+  </data>
+  <data name="SignoutAlertOkButton" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="SignoutAlertTitle" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="SubmitSurveyButton" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="SurveyCheckPageTitle" xml:space="preserve">
+    <value>Confirmer les réponses</value>
+  </data>
+  <data name="SurveyCompleted" xml:space="preserve">
+    <value>Envoyé le</value>
+  </data>
+  <data name="SurveyExpires" xml:space="preserve">
+    <value>Expire le</value>
+  </data>
+  <data name="SurveyMultipleAswersPlaceholder" xml:space="preserve">
+    <value>Sélectionner vos réponses :</value>
+  </data>
+  <data name="SurveyOpenAswerEditorPlaceholder" xml:space="preserve">
+    <value>Écrire votre réponse ici :</value>
+  </data>
+  <data name="SurveyQuestionOrderLabel" xml:space="preserve">
+    <value>{0} sur {1}</value>
+  </data>
+  <data name="SurveyQuestionsCounterLabel" xml:space="preserve">
+    <value>{0} questions</value>
+  </data>
+  <data name="SurveyQuestionsVersionLabel" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="SurveyResultsBadMessage" xml:space="preserve">
+    <value>L'Équipe médicale sera informée et vous contactera dans les plus brefs délais.
+En cas de besoin d'une assistance médicale urgente, contacter votre hôpital.</value>
+  </data>
+  <data name="SurveyResultsGoodMessage" xml:space="preserve">
+    <value>Merci, votre questionnaire a été envoyé.</value>
+  </data>
+  <data name="SurveysFilledInTitle" xml:space="preserve">
+    <value>Complétés</value>
+  </data>
+  <data name="SurveysGroupTitle" xml:space="preserve">
+    <value>QUESTIONNAIRES</value>
+  </data>
+  <data name="SurveySingleAswerPlaceholder" xml:space="preserve">
+    <value>Sélectionner votre réponse :</value>
+  </data>
+  <data name="SurveyStartButton" xml:space="preserve">
+    <value>Commencer</value>
+  </data>
+  <data name="SurveysToBeFillTitle" xml:space="preserve">
+    <value>À compléter</value>
+  </data>
+  <data name="Tagline" xml:space="preserve">
+    <value>Comment contribuer à la recherche en partageant votre expérience.</value>
+  </data>
+  <data name="TakePhoto" xml:space="preserve">
+    <value>Prendre une photo</value>
+  </data>
+  <data name="TakePhotoCameraPermissionExceptionMessage" xml:space="preserve">
+    <value>Ouvrir les paramètres et autoriser PROACT 2.0 à accéder à l’appareil photo.</value>
+  </data>
+  <data name="TakePhotoCameraUnsupportedMessage" xml:space="preserve">
+    <value>Assurez-vous que l’appareil photo est présent et qu’il fonctionne.</value>
+  </data>
+  <data name="TakePhotoCameraUnsupportedTitle" xml:space="preserve">
+    <value>L’appareil photo ne peut pas être utilisé.</value>
+  </data>
+  <data name="TapToStartRecording" xml:space="preserve">
+    <value>Appuyer pour commencer l'enregistrement</value>
+  </data>
+  <data name="TapToStartVoiceReproduction" xml:space="preserve">
+    <value>Appuyer pour écouter le message vocal</value>
+  </data>
+  <data name="TapToStopRecording" xml:space="preserve">
+    <value>Appuyer à nouveau pour interrompre l'enregistrement</value>
+  </data>
+  <data name="TermsAndConditionsAgreeMessage" xml:space="preserve">
+    <value>Pour continuer à utiliser PROACT 2.0, veuillez lire et accepter les Termes et Conditions générales, Licence et Politique de confidentialité.</value>
+  </data>
+  <data name="TermsAndConditionsAgreeTitle" xml:space="preserve">
+    <value>Termes, Conditions et Licence</value>
+  </data>
+  <data name="TermsAndConditionsAndLicenseTitle" xml:space="preserve">
+    <value>Termes et Conditions et licence</value>
+  </data>
+  <data name="TermsAndConditionsButtonText" xml:space="preserve">
+    <value>Termes et Conditions</value>
+  </data>
+  <data name="TermsAndConditionsConfirmMessage" xml:space="preserve">
+    <value>J’ai lu et accepté</value>
+  </data>
+  <data name="TermsAndConditionsError" xml:space="preserve">
+    <value>Veuillez lire et accepter nos Termes et Conditions générales et la licence.</value>
+  </data>
+  <data name="TermsAndConditionsTitle" xml:space="preserve">
+    <value>Termes et Conditions</value>
+  </data>
+  <data name="TermsConditionsAndLicenseButtonText" xml:space="preserve">
+    <value>Termes, Conditions et Licence</value>
+  </data>
+  <data name="TextTypeMessage" xml:space="preserve">
+    <value>Textuel</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="TitleRequiredError" xml:space="preserve">
+    <value>Saisir le titre du message</value>
+  </data>
+  <data name="ToBeCompletedSurveysPageTitle" xml:space="preserve">
+    <value>Questionnaires  à compléter</value>
+  </data>
+  <data name="TopicType" xml:space="preserve">
+    <value>Sujet</value>
+  </data>
+  <data name="UnlimitedNotificationsTime" xml:space="preserve">
+    <value>Aucune limite d’horaire</value>
+  </data>
+  <data name="UpdateAnalysisAlertConfirmButton" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="UpdateAnalysisAlertMessage" xml:space="preserve">
+    <value>Modifier cette analyse ?</value>
+  </data>
+  <data name="UpdateAnalysisAlertTitle" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="UpdateAnalysisSuccessAlertMessage" xml:space="preserve">
+    <value>L’analyse a été modifiée.</value>
+  </data>
+  <data name="UploadProfileImageError" xml:space="preserve">
+    <value>Impossible de charger l’image.</value>
+  </data>
+  <data name="UploadProfileImageSuccess" xml:space="preserve">
+    <value>Image chargée</value>
+  </data>
+  <data name="UrgentMedicalAdviceCondition" xml:space="preserve">
+    <value>Je comprends que PROACT 2.0 n'est PAS destiné aux conseils d'urgence.</value>
+  </data>
+  <data name="UrgentMedicalAdviceError" xml:space="preserve">
+    <value>Veuillez confirmer avoir compris que PROACT 2.0 n'est pas destiné aux conseils d'urgence.</value>
+  </data>
+  <data name="UrgentMedicalAdviceMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UrgentMedicalAdviceMessage2" xml:space="preserve">
+    <value>Si vous devez communiquer d'urgence avec vos médecins, n'utilisez pas PROACT 2.0, mais contactez-les via les numéros de téléphone dédiés.</value>
+  </data>
+  <data name="UrgentMedicalAdviceMessage3" xml:space="preserve">
+    <value>Les messages envoyés via l'application seront lus uniquement les jours ouvrables durant les plages horaires de travail.</value>
+  </data>
+  <data name="UrgentMedicalAdviceTitle" xml:space="preserve">
+    <value>PROACT 2.0 n'est pas conçu pour les appels d’urgence.</value>
+  </data>
+  <data name="VideoMessageUploadSuccess" xml:space="preserve">
+    <value>Message vidéo envoyé</value>
+  </data>
+  <data name="VideoPlayerPageTitle" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="VideoTypeMessage" xml:space="preserve">
+    <value>Vidéo</value>
+  </data>
+  <data name="VoiceMessageUploadSuccess" xml:space="preserve">
+    <value>Message vocal envoyé</value>
+  </data>
+  <data name="VoicePlayError" xml:space="preserve">
+    <value>Le message vocal ne peut pas être écouté. Veuillez réessayer.</value>
+  </data>
+  <data name="VoiceRecordingCancelButton" xml:space="preserve">
+    <value>Continuer l’enregistrement</value>
+  </data>
+  <data name="VoiceRecordingCloseButton" xml:space="preserve">
+    <value>Interrompre</value>
+  </data>
+  <data name="VoiceRecordingClosePageTitle" xml:space="preserve">
+    <value>Interrompre l’enregistrement ?</value>
+  </data>
+  <data name="VoiceRecordingTitle" xml:space="preserve">
+    <value>MESSAGE VOCAL</value>
+  </data>
+  <data name="VoiceTypeMessage" xml:space="preserve">
+    <value>Vocal</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>Attendre quelques instants...</value>
+  </data>
+  <data name="WelcomeMessage" xml:space="preserve">
+    <value>Bienvenue sur PROACT 2.0</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>OUI</value>
+  </data>
+  <data name="YourPatientsTitle" xml:space="preserve">
+    <value>Vos patients</value>
+  </data>
+      <data name="Show" xml:space="preserve">
+        <value>Montrer</value>
+    </data>
+
+        <!-- Da tradurre -->
+
+    <data name="UserCantSignin" xml:space="preserve">
+        <value>Vous n'êtes pas autorisé à accéder à PROACT 2.0</value>
+    </data>
+
+    <data name="UserCantReplyToMessage" xml:space="preserve">
+        <value>Vous n'êtes pas autorisé à écrire ou commenter un message.</value>
+    </data>
+
+    <data name="LoginDocumentsUnavaliable" xml:space="preserve">
+        <value>Terms and conditions or privacy policy not available, contact the institute administrator.</value>
+    </data>
+
+    <data name="Active" xml:space="preserve">
+        <value>Actif</value>
+    </data>
+
+    <data name="Deactivated" xml:space="preserve">
+        <value>Désactivé</value>
+    </data>
+
+    <data name="Suspended" xml:space="preserve">
+        <value>Désactivé</value>
+    </data>
+
+    <data name="Update" xml:space="preserve">
+        <value>Mettre à jour PROACT 2.0</value>
+    </data>
+
+    <data name="UpdateDiscaimer" xml:space="preserve">
+        <value>Une mise à jour est disponible. Télécharger pour continuer à utiliser PROACT 2.0</value>
+    </data>
+
+     <data name="Today" xml:space="preserve">
+        <value>aujourd'hui</value>
+    </data>
+
+    <data name="Tomorrow" xml:space="preserve">
+        <value>demain</value>
+    </data>
+
+        <data name="SurveysStats" xml:space="preserve">
+        <value>Statistiques</value>
+    </data>
+
+    <data name="SurveysPartecipants" xml:space="preserve">
+        <value>Intervenants</value>
+    </data>
+
+    <data name="CompletedSurveys" xml:space="preserve">
+        <value>Questionnaires complétés</value>
+    </data>
+
+    <data name="IncompletedSurveys" xml:space="preserve">
+        <value>Questionnaires non complétés</value>
+    </data>
+
+    <data name="CompletedSurvey" xml:space="preserve">
+        <value>Questionnaire complété</value>
+    </data>
+
+    <data name="IncompletedSurvey" xml:space="preserve">
+        <value>Questionnaire non complété</value>
+    </data>
+
+    <data name="SurveysListPageTitle" xml:space="preserve">
+        <value>Questionnaires</value>
+    </data>
+
+    <data name="SurveysResultsAndStatistics" xml:space="preserve">
+        <value>Résultats et statistiques</value>
+    </data>
+
+    <data name="SurveysNotCompiledError" xml:space="preserve">
+        <value>Le patient n'a pas rempli le questionnaire.</value>
+    </data>
+
+    <data name="SurveysResults" xml:space="preserve">
+        <value>Résultats</value>
+    </data>
+
+    <data name="SurveysStatistics" xml:space="preserve">
+        <value>Statistiques</value>
+    </data>
+</root>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.LexiconGroupsListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:LexiconGroupsListViewModel"
+    x:DataType="viewModels:LexiconGroupsListViewModel"
+    BackgroundColor="White"
+    Title="{Binding PageTitle}"
+    NavigationPage.HasNavigationBar="True">
+    
+    <ContentPage.Content>
+        <CollectionView
+            ItemSizingStrategy="MeasureAllItems"
+            ItemsSource="{Binding Groups}"
+            SelectedItem="{Binding SelectedGroup}"
+            SelectionChangedCommand="{Binding OnItemSelectedCommand}"
+            SelectionMode="Single" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Padding="10"
+                            Text="{Binding}"
+                            Style="{DynamicResource PrimaryMediumLabelStyle}"
+                            VerticalOptions="Center" />
+
+                        <BoxView
+                            Grid.Row="1"
+                            BackgroundColor="{x:StaticResource DividerColor}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</views:MvxContentPage>

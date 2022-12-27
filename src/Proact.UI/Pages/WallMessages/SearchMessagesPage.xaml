@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.SearchMessagesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:SearchMessagesViewModel"
+    x:DataType="viewModels:SearchMessagesViewModel"
+    BackgroundColor="{x:DynamicResource DividerColor}"
+    Title="{Binding PageTitle}"
+    NavigationPage.HasNavigationBar="True">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <SearchBar
+                x:Name="searchBar"
+                Placeholder="{core:Translate SearchbarPlaceholder}"
+                SearchCommand="{Binding PerformSearchCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+                VerticalOptions="Center" />
+
+            <ActivityIndicator
+                Grid.Row="1"
+                IsEnabled="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{x:DynamicResource ActivityIndicatorStyle}"
+                Color="{x:DynamicResource PrimaryTextColor}" />
+
+            <Label
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding MessageListIsEmpty}"
+                Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                Text="{core:Translate EmptySearchMessageResult}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding PlaceholderLabelIsVisible}"
+                Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                Text="{core:Translate SearchPagePlaceholder}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+
+            <CollectionView
+                Grid.Row="1"
+                ItemSizingStrategy="MeasureAllItems"
+                ItemsSource="{Binding Messages}"
+                SelectedItem="{Binding SelectedMessage}"
+                SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <local:SearchMessageViewCell />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

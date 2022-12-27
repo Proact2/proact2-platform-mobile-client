@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Proact.UI.OptionRowItemView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI">
+
+    <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="GroupTitleContainer" Grid.Row="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    x:Name="GroupTitleLabel"
+                    Grid.Row="0"
+                    Padding="5"
+                    FontSize="16"
+                    VerticalOptions="End"
+                    Style="{x:DynamicResource SecondaryBoldLabelStyle}"
+                    TextColor="{x:DynamicResource PrimaryDarkColor}"
+                    VerticalTextAlignment="End" />
+                <BoxView
+                    x:Name="GroupSeparator"
+                    Grid.Row="1"
+                    Color="{DynamicResource DividerColor}" />
+            </Grid>
+
+            <Grid
+                Grid.Row="1"
+                Padding="10"
+                BackgroundColor="White"
+                ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    x:Name="IconL"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontFamily="{x:StaticResource FontAwesomeSolid}"
+                    FontSize="20"
+                    HorizontalOptions="Start"
+                    IsVisible="false"
+                    Style="{x:DynamicResource PrimaryTextColor}"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    Spacing="0"
+                    VerticalOptions="Center">
+
+                    <Label
+                        x:Name="TitleLabel"
+                        FontSize="16"
+                        Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        x:Name="SubtitleLabel"
+                        FontSize="12"
+                        IsVisible="false"
+                        Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start" />
+
+                    <Label
+                        x:Name="CaptionLabel"
+                        FontSize="12"
+                        IsVisible="false"
+                        Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start" />
+
+                </StackLayout>
+
+                <Grid x:Name="Badge" Grid.Column="2">
+                    <Ellipse
+                        Fill="red"
+                        HeightRequest="26"
+                        HorizontalOptions="Center"
+                        Stroke="Red"
+                        VerticalOptions="Center"
+                        WidthRequest="26" />
+
+                    <Label
+                        x:Name="BadgeLabel"
+                        FontSize="14"
+                        HeightRequest="26"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{x:DynamicResource PrimarySemiBoldLabelStyle}"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        WidthRequest="26" />
+
+                </Grid>
+
+                <Label
+                    x:Name="IconR"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    FontFamily="{x:DynamicResource FontAwesomeSolid}"
+                    FontSize="16"
+                    HorizontalOptions="End"
+                    TextColor="{DynamicResource SecondaryTextColor}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+            <BoxView
+                x:Name="Separator"
+                Grid.Row="2"
+                Color="{DynamicResource DividerColor}" />
+
+        </Grid>
+
+
+    </ContentView.Content>
+</ContentView>

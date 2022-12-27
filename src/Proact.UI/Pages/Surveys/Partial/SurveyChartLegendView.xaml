@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
+    x:Class="Proact.UI.SurveyChartLegendView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Orientation="Vertical">
+
+    <BindableLayout.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView
+                    Grid.Column="0"
+                    BackgroundColor="{Binding Color}"
+                    CornerRadius="2"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+
+                <StackLayout
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    Spacing="0"
+                    VerticalOptions="Center">
+                    <Label
+                        FontSize="14"
+                        VerticalTextAlignment="End"
+                        Style="{x:StaticResource SecondaryRegularLabelStyle}"
+                        Text="{Binding Label}" />
+                    <Label
+                        FontSize="15"
+                        VerticalTextAlignment="Start"
+                        TextColor="{Binding Color}"
+                        Style="{x:StaticResource SecondarySemiBoldLabelStyle}"
+                        Text="{Binding Value}" />
+                </StackLayout>
+
+            </Grid>
+        </DataTemplate>
+    </BindableLayout.ItemTemplate>
+</StackLayout>

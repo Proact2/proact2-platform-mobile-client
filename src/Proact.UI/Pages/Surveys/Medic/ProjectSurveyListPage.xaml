@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.ProjectSurveyListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:ProjectSurveyListViewModel"
+    BackgroundColor="{DynamicResource EditorPageBackgroundColor}">
+
+    <ContentPage.Content>
+        <Grid>
+            <Label
+                FontSize="14"
+                HorizontalOptions="Center"
+                IsVisible="{Binding EmptyListIsVisible}"
+                Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                Text="{core:Translate EmptyComiledSurveysList}"
+                VerticalOptions="Center" />
+
+            <RefreshView Command="{Binding ListRefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+                <CollectionView
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Surveys}"
+                    SelectedItem="{Binding SelectedSurvey}"
+                    SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                    SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="80">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Margin="5" Orientation="Vertical">
+                                    <Label
+                                        Style="{x:DynamicResource PrimaryMediumLabelStyle}"
+                                        Text="{Binding Title}"
+                                        VerticalOptions="End"
+                                        VerticalTextAlignment="End" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="12"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="2"
+                                        Style="{x:DynamicResource SecondaryRegularLabelStyle}"
+                                        Text="{Binding Description}"
+                                        VerticalOptions="Start"
+                                        VerticalTextAlignment="Start" />
+                                </StackLayout>
+
+                                <Label
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{x:DynamicResource PrimaryDarkColor}"
+                                    Style="{x:DynamicResource SecondaryBoldLabelStyle}"
+                                    Text="{Binding Version}" />
+
+                                <Label
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Style="{x:DynamicResource FontIconStyle}"
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.ChevronRight}"
+                                    TextColor="{x:DynamicResource SecondaryTextColor}" />
+
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"
+                                    BackgroundColor="{x:DynamicResource DividerColor}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </RefreshView>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>

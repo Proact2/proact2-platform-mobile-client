@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Proact.UI.SearchMessageViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+    Padding="{x:StaticResource SearchMessageCellPadding}"
+    x:DataType="models:MessageModel"
+    RowSpacing="0">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="1" />
+        <RowDefinition Height="auto" />
+        <RowDefinition Height="1" />
+    </Grid.RowDefinitions>
+
+    <BoxView Color="{DynamicResource DividerColor}" />
+
+    <!--  Main message  -->
+
+    <Grid
+        Grid.Row="1"
+        Padding="18,9"
+        BackgroundColor="{x:DynamicResource PageBackgroundColor}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="64" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Message Type  -->
+
+        <local:BadgeLabel
+            Grid.Row="0"
+            BadgeColor="{x:StaticResource InfoBGColor}"
+            HorizontalOptions="End"
+            IsVisible="{Binding IsOriginalMessage}"
+            Text="{core:Translate TopicType}"
+            TextColor="White" />
+
+        <local:BadgeLabel
+            Grid.Row="0"
+            BadgeColor="{x:StaticResource ComplementaryColor}"
+            HorizontalOptions="End"
+            IsVisible="{Binding IsCommentMessage}"
+            Text="{core:Translate CommentType}"
+            TextColor="White" />
+
+        <local:BadgeLabel
+            Grid.Row="0"
+            BadgeColor="{x:StaticResource BroadcastBGColor}"
+            HorizontalOptions="End"
+            IsVisible="{Binding IsBroadcastMessage}"
+            Text="{core:Translate BroadcastType}"
+            TextColor="White" />
+
+        <!--  Author and emoji  -->
+
+        <local:SearchMessageHeaderContentView Grid.Row="1" />
+
+        <!--  Message text  -->
+
+        <Label
+            Grid.Row="2"
+            LineBreakMode="TailTruncation"
+            MaxLines="5"
+            Style="{DynamicResource MessageTextStyle}"
+            Text="{Binding Body}" />
+
+    </Grid>
+
+    <BoxView Grid.Row="2" Color="{DynamicResource DividerColor}" />
+
+</Grid>

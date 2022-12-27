@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Proact.UI.AddSingleSelectionLexiconView"
+      xmlns:models="clr-namespace:Proact.Mobile.Core.Models;assembly=Proact.Mobile.Core"
+      xmlns:fontawesome="clr-namespace:FontAwesome"
+      xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+      x:DataType="models:LexiconCategoryModel"
+      Padding="10">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Label
+        Grid.Row="0"
+        Text="{Binding Name }"
+        Style="{DynamicResource PrimaryMediumLabelStyle}"
+        FontSize="20" />
+
+    <Frame
+        Grid.Row="1"
+        HeightRequest="50"
+        HasShadow="False"
+        BorderColor="{x:StaticResource DividerColor}"
+        Padding="10"
+        BackgroundColor="White"
+        CornerRadius="20">
+        <Grid>
+            <Label
+                Text="{Binding SingleSelectionSelectedValue}"
+                FontSize="16"
+                VerticalOptions="Center"
+                Style="{DynamicResource SecondaryMediumLabelStyle}" />
+
+            <Label
+                Style="{DynamicResource FontIconStyle}"
+                TextColor="{x:StaticResource AnalysisColor}"
+                FontSize="16"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Text="{x:Static fontawesome:FontAwesomeIcons.ChevronRight}" />
+        </Grid>
+        
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer 
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:AddAnalysisViewModel}}, Path=OpenLexiconLabelSelectionPageCommand}"
+                CommandParameter="{Binding .}" />
+        </Frame.GestureRecognizers>
+        
+    </Frame>
+</Grid>

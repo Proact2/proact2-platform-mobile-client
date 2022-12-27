@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:MvxContentPage
+    x:Class="Proact.UI.Pages.VoiceRecordingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:SkiaPulse="clr-namespace:SkiaPulse"
+    xmlns:converters="clr-namespace:Proact.UI.Converters"
+    xmlns:core="clr-namespace:Proact.Mobile.Core;assembly=Proact.Mobile.Core"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:Proact.UI"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:Proact.Mobile.Core.ViewModels;assembly=Proact.Mobile.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding PageTitle}"
+    x:TypeArguments="viewModels:VoiceRecordingViewModel"
+    BackgroundColor="{DynamicResource VoiceRecordingColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NativeInverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid
+            Padding="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button
+                Grid.Row="0"
+                Margin="10"
+                BackgroundColor="White"
+                Command="{Binding ClosePageCommand}"
+                CornerRadius="10"
+                TranslationY="20"
+                HorizontalOptions="Start"
+                Style="{x:DynamicResource FontIconButtonStyle}"
+                Text="{x:Static fontawesome:FontAwesomeIcons.ChevronLeft}"
+                TextColor="{x:DynamicResource SecondaryColor}"
+                VerticalOptions="Start" />
+
+            <Grid
+                Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <SkiaPulse:PulseView
+                    x:Name="pulseView"
+                    Grid.Row="0"
+                    Margin="10"
+                    AutoStart="False"
+                    PulseColor="{x:DynamicResource VoiceRecordingDarkColor}"
+                    Speed="10"
+                    VerticalOptions="FillAndExpand" />
+
+                <BoxView
+                    BackgroundColor="{x:DynamicResource VoiceRecordingDarkColor}"
+                    CornerRadius="75"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="150" />
+
+                <Label
+                    Grid.Row="0"
+                    FontSize="60"
+                    Style="{x:DynamicResource FontIconStyle}"
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Microphone}"
+                    TextColor="White" />
+
+                <Grid Grid.Row="1" InputTransparent="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="80" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        FontSize="30"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{x:DynamicResource SecondaryBoldLabelStyle}"
+                        Text="{core:Translate VoiceRecordingTitle}"
+                        TextColor="White" />
+
+                    <Label
+                        Grid.Row="1"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{Binding ActionLabelText}"
+                        TextColor="White" />
+                </Grid>
+
+                <Grid
+                    Grid.Row="3"
+                    HorizontalOptions="FillAndExpand"
+                    InputTransparent="True"
+                    RowSpacing="10"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
+
+                        <Label
+                            Margin="0"
+                            Padding="0"
+                            FontSize="26"
+                            HeightRequest="50"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"
+                            Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                            Text="{Binding CurrentRecordingSecondsFormatted}"
+                            TextColor="White"
+                            TranslationY="10"
+                            VerticalOptions="End"
+                            VerticalTextAlignment="End" />
+
+                        <Label
+                            FontSize="16"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                            Text="/"
+                            TextColor="White"
+                            VerticalOptions="End"
+                            VerticalTextAlignment="End" />
+
+                        <Label
+                            FontSize="16"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                            Text="{Binding TotalRecordingSecondsAvailable}"
+                            TextColor="White"
+                            VerticalOptions="End"
+                            VerticalTextAlignment="End" />
+
+                    </StackLayout>
+
+
+                    <Label
+                        Grid.Row="1"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        IsVisible="{Binding RecordingLabelIsVisible}"
+                        Style="{x:DynamicResource SecondaryMediumLabelStyle}"
+                        Text="{core:Translate Recording}"
+                        TextColor="White" />
+
+                </Grid>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{mvx:MvxBind StartVoiceRecordingCommand}" />
+                </Grid.GestureRecognizers>
+
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</views:MvxContentPage>
